@@ -16,7 +16,7 @@ namespace SharpLib::MonitorConfig
     {
         // TODO: Add your methods for this class here.
     public:                   
-        void Scan();
+        bool Scan();
 
     private:
 
@@ -25,17 +25,5 @@ namespace SharpLib::MonitorConfig
         List<VirtualMonitor^> iVirtualMonitors;
     };
 
-
-//#pragma unmanaged
-    BOOL CALLBACK MonitorEnumCallback(HMONITOR aMonitor, HDC aHdc, LPRECT aRect, LPARAM aParam)
-    {
-        // Unpack our object
-        gcroot<Monitors^>* self = (gcroot<Monitors^>*)aParam;
-        // Add our virtual monitor
-        (*self)->iVirtualMonitors.Add(gcnew VirtualMonitor(aMonitor));
-        // Done here
-        return TRUE;
-    }
-//#pragma managed
 
 }
