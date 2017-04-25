@@ -18,6 +18,11 @@ namespace SharpLib::MonitorConfig
         VirtualMonitor(HMONITOR aHandle);
         ~VirtualMonitor();
 
+        bool IsPrimary();
+        //String Name();
+
+        property String^ Name;
+
     private:
         HMONITOR iHandle;
         MONITORINFOEX* iInfo;
@@ -25,5 +30,7 @@ namespace SharpLib::MonitorConfig
         PHYSICAL_MONITOR* iPhysicalMonitorArray;
         // A virtual monitor has a collection of physical monitor
         List<PhysicalMonitor^> iPhysicalMonitors;
+        //
+        
     };
 }

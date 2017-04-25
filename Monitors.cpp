@@ -12,7 +12,7 @@ namespace SharpLib::MonitorConfig
         // Unpack our object
         gcroot<Monitors^>* self = (gcroot<Monitors^>*)aParam;
         // Add our virtual monitor
-        (*self)->iVirtualMonitors.Add(gcnew VirtualMonitor(aMonitor));
+        (*self)->VirtualMonitors->Add(gcnew VirtualMonitor(aMonitor));
         // Done here
         return TRUE;
     }

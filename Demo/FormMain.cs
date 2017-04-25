@@ -21,6 +21,19 @@ namespace MonitorConfigDemo
 
             iMonitors = new Monitors();
             iMonitors.Scan();
+
+            foreach(VirtualMonitor m in iMonitors.VirtualMonitors)
+            {
+                iComboBoxVirtualMonitors.Items.Add(m.Name);
+            }
+
+            if (iComboBoxVirtualMonitors.Items.Count>0)
+            {
+                // Select first monitor
+                iComboBoxVirtualMonitors.SelectedIndex = 0;
+            }
+            
+
         }
     }
 }

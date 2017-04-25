@@ -16,6 +16,8 @@ namespace SharpLib::MonitorConfig
             // Throw exception?
         }
 
+        Name = gcnew System::String(iInfo->szDevice);
+
         // Check how many physical monitor do we have
         DWORD count = 0;
         GetNumberOfPhysicalMonitorsFromHMONITOR(aHandle, &count);
@@ -43,4 +45,31 @@ namespace SharpLib::MonitorConfig
     {
         delete iPhysicalMonitorArray;
     }
+
+    /**
+    Tell whether this monitor is our primary monitor.
+    */
+    bool VirtualMonitor::IsPrimary()
+    {
+        if (iInfo == NULL)
+        {
+            return false;
+        }
+
+        return (iInfo->dwFlags & MONITORINFOF_PRIMARY) == MONITORINFOF_PRIMARY;
+    }
+
+
+    /**
+    */
+    /*
+    String VirtualMonitor::Name()
+    {
+        if (iInfo == NULL)
+        {
+            return String::Empty;
+        }
+
+
+    }*/
 }
