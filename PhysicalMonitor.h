@@ -20,18 +20,18 @@ namespace SharpLib::MonitorConfig
         PhysicalMonitor(PHYSICAL_MONITOR* aData);
 
         // Capability checks
-        bool SupportsBrightness();
-        bool SupportsColourTemperature();
-        bool SupportsContrast();
-        bool SupportsDegauss();
-        bool SupportsDisplayAreaPosition();
-        bool SupportsDisplayAreaSize();
-        bool SupportsTechnologyType();
-        bool SupportsRGBDrive();
-        bool SupportsRGBGain();
-        bool SupportsRestoreColourDefaults();
-        bool SupportsRestoreDefaults();
-        bool SupportsRestoreDefaultEX();
+        property bool SupportsBrightness { bool get(); }
+        property bool SupportsContrast { bool get(); }
+        property bool SupportsColourTemperature { bool get(); }
+        property bool SupportsDegauss { bool get(); }
+        property bool SupportsDisplayAreaPosition { bool get(); }
+        property bool SupportsDisplayAreaSize { bool get(); }
+        property bool SupportsTechnologyType { bool get(); }
+        property bool SupportsRgbDrive { bool get(); }
+        property bool SupportsRgbGain { bool get(); }
+        property bool SupportsRestoreFactoryColourDefaults { bool get(); }
+        property bool SupportsRestoreFactoryDefaults { bool get(); }
+        property bool SupportsRestoreFactoryDefaultsEnablesMonitorSettings { bool get(); }
 
         // Brightness
         property Setting^ Brightness

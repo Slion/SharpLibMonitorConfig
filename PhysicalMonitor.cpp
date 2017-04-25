@@ -72,64 +72,64 @@ namespace SharpLib::MonitorConfig
         BOOL success = SetMonitorContrast(iData->hPhysicalMonitor, aContrast->iCurrent);
     }
     
+    ////////// Capabilities checks
 
-
-    bool PhysicalMonitor::SupportsBrightness()
+    bool PhysicalMonitor::SupportsBrightness::get()
     {
         return (iMonitorCapabilities & MC_CAPS_BRIGHTNESS) != 0;
     }
 
-    bool PhysicalMonitor::SupportsContrast()
+    bool PhysicalMonitor::SupportsContrast::get()
     {
         return (iMonitorCapabilities & MC_CAPS_CONTRAST) != 0;
     }
 
-    bool PhysicalMonitor::SupportsColourTemperature()
+    bool PhysicalMonitor::SupportsColourTemperature::get()
     {
         return (iMonitorCapabilities & MC_CAPS_COLOR_TEMPERATURE) != 0;
     }
 
-    bool PhysicalMonitor::SupportsDegauss()
+    bool PhysicalMonitor::SupportsDegauss::get()
     {
         return (iMonitorCapabilities & MC_CAPS_DEGAUSS) != 0;
     }
 
-    bool PhysicalMonitor::SupportsDisplayAreaPosition()
+    bool PhysicalMonitor::SupportsDisplayAreaPosition::get()
     {
         return (iMonitorCapabilities & MC_CAPS_DISPLAY_AREA_POSITION) != 0;
     }
 
-    bool PhysicalMonitor::SupportsDisplayAreaSize()
+    bool PhysicalMonitor::SupportsDisplayAreaSize::get()
     {
         return (iMonitorCapabilities & MC_CAPS_DISPLAY_AREA_SIZE) != 0;
     }
 
-    bool PhysicalMonitor::SupportsTechnologyType()
+    bool PhysicalMonitor::SupportsTechnologyType::get()
     {
         return (iMonitorCapabilities & MC_CAPS_MONITOR_TECHNOLOGY_TYPE) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRGBDrive()
+    bool PhysicalMonitor::SupportsRgbDrive::get()
     {
         return (iMonitorCapabilities & MC_CAPS_RED_GREEN_BLUE_DRIVE) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRGBGain()
+    bool PhysicalMonitor::SupportsRgbGain::get()
     {
         return (iMonitorCapabilities & MC_CAPS_RED_GREEN_BLUE_GAIN) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRestoreColourDefaults()
+    bool PhysicalMonitor::SupportsRestoreFactoryColourDefaults::get()
     {
         return (iMonitorCapabilities & MC_CAPS_RESTORE_FACTORY_COLOR_DEFAULTS) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRestoreDefaults()
+    bool PhysicalMonitor::SupportsRestoreFactoryDefaults::get()
     {
         return (iMonitorCapabilities & MC_CAPS_RESTORE_FACTORY_DEFAULTS) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRestoreDefaultEX()
+    bool PhysicalMonitor::SupportsRestoreFactoryDefaultsEnablesMonitorSettings::get()
     {
         return (iMonitorCapabilities & MC_RESTORE_FACTORY_DEFAULTS_ENABLES_MONITOR_SETTINGS) != 0;
     }

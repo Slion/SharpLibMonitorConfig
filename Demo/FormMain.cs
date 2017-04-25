@@ -99,7 +99,7 @@ namespace MonitorConfigDemo
             // Brightness update
             iTrackBarBrightness.Enabled = 
                 iLabelBrightness.Enabled = 
-                iLabelBrightnessPercent.Visible = pm.SupportsBrightness();
+                iLabelBrightnessPercent.Visible = pm.SupportsBrightness;
             Setting brightness = pm.Brightness;
             iTrackBarBrightness.Minimum = (int)brightness.iMin;
             iTrackBarBrightness.Maximum = (int)brightness.iMax;
@@ -108,7 +108,7 @@ namespace MonitorConfigDemo
             // Contrast update
             iTrackBarContrast.Enabled =
                 iLabelContrast.Enabled =
-                iLabelContrastPercent.Visible = pm.SupportsContrast();
+                iLabelContrastPercent.Visible = pm.SupportsContrast;
             Setting contrast = pm.Contrast;
             iTrackBarContrast.Minimum = (int)contrast.iMin;
             iTrackBarContrast.Maximum = (int)contrast.iMax;
