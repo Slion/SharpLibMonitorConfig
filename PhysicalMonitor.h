@@ -18,6 +18,8 @@ namespace SharpLib::MonitorConfig
     {
     public:
         PhysicalMonitor(PHYSICAL_MONITOR* aData);
+        ~PhysicalMonitor();
+        !PhysicalMonitor();
 
         // Capability checks
         property bool SupportsBrightness { bool get(); }

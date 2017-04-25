@@ -84,7 +84,15 @@ namespace MonitorConfigDemo
         /// </summary>
         private void UpdateMonitors()
         {
-            iMonitors = new Monitors();
+            //if (iMonitors!=null)
+            //{
+            //    iMonitors.Dispose();
+            //    iMonitors = null;
+            //}
+            if (iMonitors == null)
+            {
+                iMonitors = new Monitors();
+            }
             iMonitors.Scan();
             PopulateVirtualMonitors();
         }

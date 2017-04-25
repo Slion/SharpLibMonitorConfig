@@ -17,9 +17,44 @@ namespace SharpLib::MonitorConfig
         return TRUE;
     }
 
+    Monitors::Monitors()
+    { 
+        Construct();
+    }
+
+    Monitors::~Monitors()
+    {
+        this->!Monitors();
+    }
+
+    Monitors::!Monitors()
+    {
+        Destruct();
+    }
+
+    void Monitors::Construct()
+    {
+        VirtualMonitors = gcnew List<VirtualMonitor^>();
+    }
+
+    void Monitors::Destruct()
+    {
+        if (VirtualMonitors != nullptr)
+        {
+            for each (VirtualMonitor^ vm in VirtualMonitors)
+            {
+                delete vm;
+            }
+            VirtualMonitors->Clear();
+            delete VirtualMonitors;
+            VirtualMonitors = nullptr;
+        }
+    }
 
     bool Monitors::Scan()
     {
+        Destruct();
+        Construct();
         // Package into native type as per: http://stackoverflow.com/a/4163378/3969362
         gcroot<Monitors^>* self = new gcroot<Monitors^>(this);
         bool success = EnumDisplayMonitors(NULL, NULL, MonitorEnumCallback, (LPARAM)self) != 0;

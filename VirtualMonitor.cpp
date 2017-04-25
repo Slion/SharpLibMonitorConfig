@@ -61,12 +61,15 @@ namespace SharpLib::MonitorConfig
         Name = nullptr;
 
         // Explicitly destroy our object, me thing that's like Dispose in C#
-        for each (PhysicalMonitor^ m in PhysicalMonitors)
+        if (PhysicalMonitors != nullptr)
         {
-            delete m;
+            for each (PhysicalMonitor^ m in PhysicalMonitors)
+            {
+                delete m;
+            }
+            PhysicalMonitors->Clear();
+            PhysicalMonitors = nullptr;
         }
-        PhysicalMonitors->Clear();
-
         // As per Microsoft recommandation we clean-up unmanaged resources
         delete iInfo;
         iInfo = NULL;

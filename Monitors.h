@@ -16,17 +16,17 @@ namespace SharpLib::MonitorConfig
     {
         // TODO: Add your methods for this class here.
     public:
-        Monitors() { VirtualMonitors = gcnew List<VirtualMonitor^>(); }
+        Monitors();
+        ~Monitors();
+        !Monitors();
 
         property List<VirtualMonitor^>^ VirtualMonitors;
+
         bool Scan();
 
-        //List<VirtualMonitor^>^ VirtualMonitors() { return &iVirtualMonitors; };
-
     private:
-
-
-    public:
+        void Construct();
+        void Destruct();
         
     };
 

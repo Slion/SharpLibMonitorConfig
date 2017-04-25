@@ -27,6 +27,18 @@ namespace SharpLib::MonitorConfig
         iSupportedColorTemperatures = supportedColorTemperatures;
     }
 
+    PhysicalMonitor::~PhysicalMonitor()
+    {
+        this->!PhysicalMonitor();
+    }
+
+    PhysicalMonitor::!PhysicalMonitor()
+    {
+        delete Description;
+        Description = nullptr;
+    }
+
+
 
     ///
     Setting^ PhysicalMonitor::Brightness::get()
