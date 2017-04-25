@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "VirtualMonitor.h"
 
+using namespace System::Windows;
+
 namespace SharpLib::MonitorConfig
 {
     /**
@@ -17,6 +19,10 @@ namespace SharpLib::MonitorConfig
         }
 
         Name = gcnew System::String(iInfo->szDevice);
+        //
+        System::Windows::Point pt1(iInfo->rcMonitor.left, iInfo->rcMonitor.bottom);
+        System::Windows::Point pt2(iInfo->rcMonitor.right, iInfo->rcMonitor.top);
+        Rect = System::Windows::Rect(pt1,pt2);
 
         // Check how many physical monitor do we have
         DWORD count = 0;

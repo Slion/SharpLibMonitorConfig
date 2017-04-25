@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 using SharpLib.MonitorConfig;
 
 namespace MonitorConfigDemo
@@ -22,9 +23,19 @@ namespace MonitorConfigDemo
             iMonitors = new Monitors();
             iMonitors.Scan();
 
-            foreach(VirtualMonitor m in iMonitors.VirtualMonitors)
+            //Rect rect;
+            //rect.S
+
+            // Populate virtual monitor list
+            foreach (VirtualMonitor m in iMonitors.VirtualMonitors)
             {
-                iComboBoxVirtualMonitors.Items.Add(m.Name);
+                String itemText = m.Name + " ( " + m.Rect.Size.Width + " x " + m.Rect.Size.Height + " )";
+                if (m.IsPrimary())
+                {
+                    // Mark primary display
+                    itemText += " *";
+                }
+                iComboBoxVirtualMonitors.Items.Add(itemText);
             }
 
             if (iComboBoxVirtualMonitors.Items.Count>0)

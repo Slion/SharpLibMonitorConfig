@@ -3,6 +3,7 @@
 #include "PhysicalMonitor.h"
 
 using namespace System;
+using namespace System::Windows;
 using namespace System::Collections::Generic;
 
 
@@ -22,6 +23,7 @@ namespace SharpLib::MonitorConfig
         //String Name();
 
         property String^ Name;
+        property Rect Rect;
 
     private:
         HMONITOR iHandle;
