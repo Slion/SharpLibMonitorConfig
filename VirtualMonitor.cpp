@@ -19,6 +19,7 @@ namespace SharpLib::MonitorConfig
         }
 
         Name = gcnew System::String(iInfo->szDevice);
+        PhysicalMonitors = gcnew List<PhysicalMonitor^>();
         //
         System::Windows::Point pt1(iInfo->rcMonitor.left, iInfo->rcMonitor.bottom);
         System::Windows::Point pt2(iInfo->rcMonitor.right, iInfo->rcMonitor.top);
@@ -39,17 +40,39 @@ namespace SharpLib::MonitorConfig
         for (DWORD i = 0; i<count; i++)
         {
             //Create Physical Monitors
-            iPhysicalMonitors.Add(gcnew PhysicalMonitor());
+            PhysicalMonitors->Add(gcnew PhysicalMonitor(&iPhysicalMonitorArray[i]));
         }
 
     }
 
-    /**
-    TODO: Check if we ought to use finalizer or dispose instead?
-    */
+    /// Destructor
     VirtualMonitor::~VirtualMonitor()
     {
+        // As per Microsoft recommandation we simply can the finalizer from here
+        // See: https://msdn.microsoft.com/en-us/library/ke3a209d.aspx#Destructors%20and%20finalizers
+        this->!VirtualMonitor();
+    }
+
+    /// Finalizer
+    VirtualMonitor::!VirtualMonitor()
+    {
+        // Taking care of managed resources first, I guess
+        delete Name;
+        Name = nullptr;
+
+        // Explicitly destroy our object, me thing that's like Dispose in C#
+        for each (PhysicalMonitor^ m in PhysicalMonitors)
+        {
+            delete m;
+        }
+        PhysicalMonitors->Clear();
+
+        // As per Microsoft recommandation we clean-up unmanaged resources
+        delete iInfo;
+        iInfo = NULL;
+
         delete iPhysicalMonitorArray;
+        iPhysicalMonitorArray = NULL;
     }
 
     /**

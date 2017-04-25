@@ -16,23 +16,26 @@ namespace SharpLib::MonitorConfig
     public ref class VirtualMonitor
     {
     public:
+        // Constructor
         VirtualMonitor(HMONITOR aHandle);
+        // Destructor
         ~VirtualMonitor();
+        // Finalizer
+        !VirtualMonitor();
 
         bool IsPrimary();
-        //String Name();
-
+      
+        /// The name of this monitor
         property String^ Name;
+        /// Rectangle defining our monitor, check its size for monitor resolution
         property Rect Rect;
+        /// A virtual monitor has a collection of physical monitor
+        property List<PhysicalMonitor^>^ PhysicalMonitors;
 
     private:
         HMONITOR iHandle;
         MONITORINFOEX* iInfo;
         DWORD iPhysicalMonitorCount;
         PHYSICAL_MONITOR* iPhysicalMonitorArray;
-        // A virtual monitor has a collection of physical monitor
-        List<PhysicalMonitor^> iPhysicalMonitors;
-        //
-        
     };
 }

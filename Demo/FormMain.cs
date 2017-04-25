@@ -20,12 +20,25 @@ namespace MonitorConfigDemo
         {
             InitializeComponent();
 
-            iMonitors = new Monitors();
-            iMonitors.Scan();
+            UpdateMonitors();           
+        }
 
-            //Rect rect;
-            //rect.S
+        /// <summary>
+        /// Our virtual monitor was changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void iComboBoxVirtualMonitors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulatePhysicalMonitors();
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PopulateVirtualMonitors()
+        {
+            iComboBoxVirtualMonitors.Items.Clear();
             // Populate virtual monitor list
             foreach (VirtualMonitor m in iMonitors.VirtualMonitors)
             {
@@ -38,13 +51,52 @@ namespace MonitorConfigDemo
                 iComboBoxVirtualMonitors.Items.Add(itemText);
             }
 
-            if (iComboBoxVirtualMonitors.Items.Count>0)
+            if (iComboBoxVirtualMonitors.Items.Count > 0) //Defensive
             {
                 // Select first monitor
                 iComboBoxVirtualMonitors.SelectedIndex = 0;
             }
-            
+        }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PopulatePhysicalMonitors()
+        {
+            iComboBoxPhysicalMonitors.Items.Clear();
+            // Populate our physical monitor accordingly
+            VirtualMonitor vm = iMonitors.VirtualMonitors[iComboBoxVirtualMonitors.SelectedIndex];
+            foreach (PhysicalMonitor pm in vm.PhysicalMonitors)
+            {
+                iComboBoxPhysicalMonitors.Items.Add(pm.Description);
+            }
+
+            if (iComboBoxPhysicalMonitors.Items.Count > 0) //Defensive
+            {
+                // Select first monitor
+                iComboBoxPhysicalMonitors.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateMonitors()
+        {
+            iMonitors = new Monitors();
+            iMonitors.Scan();
+            PopulateVirtualMonitors();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void iButtonRefresh_Click(object sender, EventArgs e)
+        {
+            UpdateMonitors();
         }
     }
 }

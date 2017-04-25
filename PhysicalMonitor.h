@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <PhysicalMonitorEnumerationAPI.h>
+#include <HighLevelMonitorConfigurationAPI.h>
 
 using namespace System;
 
@@ -15,16 +16,38 @@ namespace SharpLib::MonitorConfig
     public ref class PhysicalMonitor
     {
     public:
-        PhysicalMonitor(/*HMONITOR aHandle*/) //: iHandle(aHandle)
-        {
+        PhysicalMonitor(PHYSICAL_MONITOR* aData);
 
-            //
-            //TODO: Add the constructor code here
-            //
-        }
+        bool SupportsBrightness();
 
+        bool SupportsColourTemperature();
+
+        bool SupportsContrast();
+
+        bool SupportsDegauss();
+
+        bool SupportsDisplayAreaPosition();
+
+        bool SupportsDisplayAreaSize();
+
+        bool SupportsTechnologyType();
+
+        bool SupportsRGBDrive();
+
+        bool SupportsRGBGain();
+
+        bool SupportsRestoreColourDefaults();
+
+        bool SupportsRestoreDefaults();
+
+        bool SupportsRestoreDefaultEX();
+
+
+        String^ Description;
 
     private:
-        PHYSICAL_MONITOR* iData;
+        PHYSICAL_MONITOR* iData; // Used
+        DWORD iMonitorCapabilities;
+        DWORD iSupportedColorTemperatures;
     };
 }
