@@ -90,6 +90,35 @@ namespace MonitorConfigDemo
         }
 
         /// <summary>
+        /// Update control according to currently selected physical monitor.
+        /// </summary>
+        private void UpdatePhysicalMonitor()
+        {
+            // Get our physical monitor
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            // Brightness update
+            iTrackBarBrightness.Enabled = 
+                iLabelBrightness.Enabled = 
+                iLabelBrightnessPercent.Visible = pm.SupportsBrightness();
+            // 
+            Setting brightness = pm.Brightness;
+            iTrackBarBrightness.Minimum = (int)brightness.iMin;
+            iTrackBarBrightness.Maximum = (int)brightness.iMax;
+            iTrackBarBrightness.Value = (int)brightness.iCurrent;
+            iTrackBarBrightness.TickFrequency = (iTrackBarBrightness.Maximum - iTrackBarBrightness.Minimum) / 20;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private PhysicalMonitor CurrentPhysicalMonitor()
+        {
+            PhysicalMonitor pm = iMonitors.VirtualMonitors[iComboBoxVirtualMonitors.SelectedIndex].PhysicalMonitors[iComboBoxPhysicalMonitors.SelectedIndex];
+            return pm;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="sender"></param>
@@ -97,6 +126,28 @@ namespace MonitorConfigDemo
         private void iButtonRefresh_Click(object sender, EventArgs e)
         {
             UpdateMonitors();
+        }
+
+        private void iComboBoxPhysicalMonitors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdatePhysicalMonitor();
+        }
+
+        private void iTrackBarBrightness_ValueChanged(object sender, EventArgs e)
+        {
+            iToolTip.SetToolTip(iTrackBarBrightness, iTrackBarBrightness.Value.ToString());
+            float max = iTrackBarBrightness.Maximum - iTrackBarBrightness.Minimum;
+            float current = iTrackBarBrightness.Value - iTrackBarBrightness.Minimum;
+            int percent = (int)(max / 100 * current);
+            iLabelBrightnessPercent.Text = percent.ToString() + "%";
+        }
+
+        private void iTrackBarBrightness_Scroll(object sender, EventArgs e)
+        {
+            // Set brighness
+            Setting brightness = new Setting((uint)iTrackBarBrightness.Minimum, (uint)iTrackBarBrightness.Value, (uint)iTrackBarBrightness.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.Brightness = brightness;
         }
     }
 }

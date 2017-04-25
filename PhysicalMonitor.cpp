@@ -27,6 +27,30 @@ namespace SharpLib::MonitorConfig
         iSupportedColorTemperatures = supportedColorTemperatures;
     }
 
+
+    ///
+    Setting^ PhysicalMonitor::Brightness::get()
+    {
+        DWORD min=0;
+        DWORD max=0;
+        DWORD current=0;
+        // Get our values
+        BOOL success = GetMonitorBrightness(iData->hPhysicalMonitor, &min, &current, &max);
+        // Set our value
+        iBrightness.iCurrent = current;
+        iBrightness.iMin = min;
+        iBrightness.iMax = max;
+        // Provide them
+        return %iBrightness;
+    }
+
+    void PhysicalMonitor::Brightness::set(Setting^ aBrigthness)
+    {
+        BOOL success = SetMonitorBrightness(iData->hPhysicalMonitor, aBrigthness->iCurrent);
+    }
+    
+
+
     bool PhysicalMonitor::SupportsBrightness()
     {
         return (iMonitorCapabilities & MC_CAPS_BRIGHTNESS) != 0;

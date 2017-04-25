@@ -138,6 +138,7 @@
     <ClInclude Include="PhysicalMonitor.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Monitors.h" />
+    <ClInclude Include="Setting.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="VirtualMonitor.h" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Monitors.cpp" />
     <ClCompile Include="PhysicalMonitor.cpp" />
+    <ClCompile Include="Setting.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

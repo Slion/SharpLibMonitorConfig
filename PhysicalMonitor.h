@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <PhysicalMonitorEnumerationAPI.h>
 #include <HighLevelMonitorConfigurationAPI.h>
+#include "Setting.h"
 
 using namespace System;
 
@@ -18,36 +19,35 @@ namespace SharpLib::MonitorConfig
     public:
         PhysicalMonitor(PHYSICAL_MONITOR* aData);
 
+        // Capability checks
         bool SupportsBrightness();
-
         bool SupportsColourTemperature();
-
         bool SupportsContrast();
-
         bool SupportsDegauss();
-
         bool SupportsDisplayAreaPosition();
-
         bool SupportsDisplayAreaSize();
-
         bool SupportsTechnologyType();
-
         bool SupportsRGBDrive();
-
         bool SupportsRGBGain();
-
         bool SupportsRestoreColourDefaults();
-
         bool SupportsRestoreDefaults();
-
         bool SupportsRestoreDefaultEX();
 
+        //Brightness
+        property Setting^ Brightness
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
 
-        String^ Description;
+
+        property String^ Description;
 
     private:
         PHYSICAL_MONITOR* iData; // Used
         DWORD iMonitorCapabilities;
         DWORD iSupportedColorTemperatures;
+        //
+        Setting iBrightness;
     };
 }
