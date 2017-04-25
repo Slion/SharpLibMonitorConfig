@@ -16,8 +16,8 @@ namespace SharpLib::MonitorConfig
         Description = gcnew System::String(iData->szPhysicalMonitorDescription);
 
         // Get capabilities
-        DWORD monitorCapabilities;
-        DWORD supportedColorTemperatures;
+        DWORD monitorCapabilities=0;
+        DWORD supportedColorTemperatures=0;
         if (!GetMonitorCapabilities(iData->hPhysicalMonitor, &monitorCapabilities, &supportedColorTemperatures))
         {
             // TODO: throw exception?
@@ -44,9 +44,32 @@ namespace SharpLib::MonitorConfig
         return %iBrightness;
     }
 
+    ///
     void PhysicalMonitor::Brightness::set(Setting^ aBrigthness)
     {
         BOOL success = SetMonitorBrightness(iData->hPhysicalMonitor, aBrigthness->iCurrent);
+    }
+
+    ///
+    Setting^ PhysicalMonitor::Contrast::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorContrast(iData->hPhysicalMonitor, &min, &current, &max);
+        // Set our value
+        iContrast.iCurrent = current;
+        iContrast.iMin = min;
+        iContrast.iMax = max;
+        // Provide them
+        return %iContrast;
+    }
+
+    ///
+    void PhysicalMonitor::Contrast::set(Setting^ aContrast)
+    {
+        BOOL success = SetMonitorContrast(iData->hPhysicalMonitor, aContrast->iCurrent);
     }
     
 
@@ -56,14 +79,14 @@ namespace SharpLib::MonitorConfig
         return (iMonitorCapabilities & MC_CAPS_BRIGHTNESS) != 0;
     }
 
-    bool PhysicalMonitor::SupportsColourTemperature()
-    {
-        return (iMonitorCapabilities & MC_CAPS_COLOR_TEMPERATURE) != 0;
-    }
-
     bool PhysicalMonitor::SupportsContrast()
     {
         return (iMonitorCapabilities & MC_CAPS_CONTRAST) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColourTemperature()
+    {
+        return (iMonitorCapabilities & MC_CAPS_COLOR_TEMPERATURE) != 0;
     }
 
     bool PhysicalMonitor::SupportsDegauss()

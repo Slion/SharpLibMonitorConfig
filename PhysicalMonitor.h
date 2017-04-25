@@ -33,8 +33,15 @@ namespace SharpLib::MonitorConfig
         bool SupportsRestoreDefaults();
         bool SupportsRestoreDefaultEX();
 
-        //Brightness
+        // Brightness
         property Setting^ Brightness
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
+        // Contrast
+        property Setting^ Contrast
         {
             Setting^ get();
             void set(Setting^ aSetting);
@@ -49,5 +56,6 @@ namespace SharpLib::MonitorConfig
         DWORD iSupportedColorTemperatures;
         //
         Setting iBrightness;
+        Setting iContrast;
     };
 }

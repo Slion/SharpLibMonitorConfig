@@ -100,12 +100,20 @@ namespace MonitorConfigDemo
             iTrackBarBrightness.Enabled = 
                 iLabelBrightness.Enabled = 
                 iLabelBrightnessPercent.Visible = pm.SupportsBrightness();
-            // 
             Setting brightness = pm.Brightness;
             iTrackBarBrightness.Minimum = (int)brightness.iMin;
             iTrackBarBrightness.Maximum = (int)brightness.iMax;
             iTrackBarBrightness.Value = (int)brightness.iCurrent;
             iTrackBarBrightness.TickFrequency = (iTrackBarBrightness.Maximum - iTrackBarBrightness.Minimum) / 20;
+            // Contrast update
+            iTrackBarContrast.Enabled =
+                iLabelContrast.Enabled =
+                iLabelContrastPercent.Visible = pm.SupportsContrast();
+            Setting contrast = pm.Contrast;
+            iTrackBarContrast.Minimum = (int)contrast.iMin;
+            iTrackBarContrast.Maximum = (int)contrast.iMax;
+            iTrackBarContrast.Value = (int)contrast.iCurrent;
+            iTrackBarContrast.TickFrequency = (iTrackBarContrast.Maximum - iTrackBarContrast.Minimum) / 20;
         }
 
         /// <summary>
@@ -149,5 +157,23 @@ namespace MonitorConfigDemo
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.Brightness = brightness;
         }
+
+        private void iTrackBarContrast_ValueChanged(object sender, EventArgs e)
+        {
+            iToolTip.SetToolTip(iTrackBarContrast, iTrackBarContrast.Value.ToString());
+            float max = iTrackBarContrast.Maximum - iTrackBarContrast.Minimum;
+            float current = iTrackBarContrast.Value - iTrackBarContrast.Minimum;
+            int percent = (int)(max / 100 * current);
+            iLabelContrastPercent.Text = percent.ToString() + "%";
+        }
+
+        private void iTrackBarContrast_Scroll(object sender, EventArgs e)
+        {
+            // Set contrast
+            Setting contrast = new Setting((uint)iTrackBarContrast.Minimum, (uint)iTrackBarContrast.Value, (uint)iTrackBarContrast.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.Contrast = contrast;
+        }
+
     }
 }

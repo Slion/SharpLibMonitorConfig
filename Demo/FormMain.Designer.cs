@@ -38,7 +38,11 @@
             this.iTrackBarBrightness = new System.Windows.Forms.TrackBar();
             this.iToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.iLabelBrightnessPercent = new System.Windows.Forms.Label();
+            this.iLabelContrastPercent = new System.Windows.Forms.Label();
+            this.iTrackBarContrast = new System.Windows.Forms.TrackBar();
+            this.iLabelContrast = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.SuspendLayout();
             // 
             // iComboBoxVirtualMonitors
@@ -108,20 +112,51 @@
             this.iTrackBarBrightness.Scroll += new System.EventHandler(this.iTrackBarBrightness_Scroll);
             this.iTrackBarBrightness.ValueChanged += new System.EventHandler(this.iTrackBarBrightness_ValueChanged);
             // 
-            // iLabelBrighnessPrecent
+            // iLabelBrightnessPercent
             // 
             this.iLabelBrightnessPercent.AutoSize = true;
             this.iLabelBrightnessPercent.Location = new System.Drawing.Point(351, 77);
-            this.iLabelBrightnessPercent.Name = "iLabelBrighnessPrecent";
+            this.iLabelBrightnessPercent.Name = "iLabelBrightnessPercent";
             this.iLabelBrightnessPercent.Size = new System.Drawing.Size(21, 13);
             this.iLabelBrightnessPercent.TabIndex = 7;
             this.iLabelBrightnessPercent.Text = "0%";
+            // 
+            // iLabelContrastPercent
+            // 
+            this.iLabelContrastPercent.AutoSize = true;
+            this.iLabelContrastPercent.Location = new System.Drawing.Point(351, 128);
+            this.iLabelContrastPercent.Name = "iLabelContrastPercent";
+            this.iLabelContrastPercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelContrastPercent.TabIndex = 10;
+            this.iLabelContrastPercent.Text = "0%";
+            // 
+            // iTrackBarContrast
+            // 
+            this.iTrackBarContrast.Location = new System.Drawing.Point(142, 117);
+            this.iTrackBarContrast.Name = "iTrackBarContrast";
+            this.iTrackBarContrast.Size = new System.Drawing.Size(203, 45);
+            this.iTrackBarContrast.TabIndex = 9;
+            this.iTrackBarContrast.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.iTrackBarContrast.Scroll += new System.EventHandler(this.iTrackBarContrast_Scroll);
+            this.iTrackBarContrast.ValueChanged += new System.EventHandler(this.iTrackBarContrast_ValueChanged);
+            // 
+            // iLabelContrast
+            // 
+            this.iLabelContrast.AutoSize = true;
+            this.iLabelContrast.Location = new System.Drawing.Point(12, 128);
+            this.iLabelContrast.Name = "iLabelContrast";
+            this.iLabelContrast.Size = new System.Drawing.Size(49, 13);
+            this.iLabelContrast.TabIndex = 8;
+            this.iLabelContrast.Text = "Contrast:";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 262);
+            this.Controls.Add(this.iLabelContrastPercent);
+            this.Controls.Add(this.iTrackBarContrast);
+            this.Controls.Add(this.iLabelContrast);
             this.Controls.Add(this.iLabelBrightnessPercent);
             this.Controls.Add(this.iTrackBarBrightness);
             this.Controls.Add(this.iLabelBrightness);
@@ -133,6 +168,7 @@
             this.Name = "FormMain";
             this.Text = "Monitor Configuration Demo";
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,6 +185,9 @@
         private System.Windows.Forms.TrackBar iTrackBarBrightness;
         private System.Windows.Forms.ToolTip iToolTip;
         private System.Windows.Forms.Label iLabelBrightnessPercent;
+        private System.Windows.Forms.Label iLabelContrastPercent;
+        private System.Windows.Forms.TrackBar iTrackBarContrast;
+        private System.Windows.Forms.Label iLabelContrast;
     }
 }
 
