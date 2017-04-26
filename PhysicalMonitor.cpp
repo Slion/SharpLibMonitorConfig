@@ -159,6 +159,78 @@ namespace SharpLib::MonitorConfig
         BOOL success = SetMonitorContrast(Handle, aContrast->Current);
     }
     
+    ///
+    /// 
+    ///
+    Setting^ PhysicalMonitor::GainRed::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorRedGreenOrBlueGain(Handle, MC_RED_GAIN, &min, &current, &max);
+        // Set our value
+        iGainRed.Current = current;
+        iGainRed.Min = min;
+        iGainRed.Max = max;
+        // Provide them
+        return %iGainRed;
+    }
+
+    ///
+    void PhysicalMonitor::GainRed::set(Setting^ aSetting)
+    {
+        BOOL success = SetMonitorRedGreenOrBlueGain(Handle, MC_RED_GAIN, aSetting->Current);
+    }
+
+    ///
+    /// 
+    ///
+    Setting^ PhysicalMonitor::GainGreen::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorRedGreenOrBlueGain(Handle, MC_GREEN_GAIN, &min, &current, &max);
+        // Set our value
+        iGainGreen.Current = current;
+        iGainGreen.Min = min;
+        iGainGreen.Max = max;
+        // Provide them
+        return %iGainGreen;
+    }
+
+    ///
+    void PhysicalMonitor::GainGreen::set(Setting^ aSetting)
+    {
+        BOOL success = SetMonitorRedGreenOrBlueGain(Handle, MC_GREEN_GAIN, aSetting->Current);
+    }
+
+    ///
+    /// 
+    ///
+    Setting^ PhysicalMonitor::GainBlue::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorRedGreenOrBlueGain(Handle, MC_BLUE_GAIN, &min, &current, &max);
+        // Set our value
+        iGainBlue.Current = current;
+        iGainBlue.Min = min;
+        iGainBlue.Max = max;
+        // Provide them
+        return %iGainBlue;
+    }
+
+    ///
+    void PhysicalMonitor::GainBlue::set(Setting^ aSetting)
+    {
+        BOOL success = SetMonitorRedGreenOrBlueGain(Handle, MC_BLUE_GAIN, aSetting->Current);
+    }
+
     ////////// Capabilities checks
 
     bool PhysicalMonitor::SupportsBrightness::get()

@@ -44,8 +44,22 @@
             this.iButtonColorReset = new System.Windows.Forms.Button();
             this.iButtonFactoryReset = new System.Windows.Forms.Button();
             this.iLabelMonitorTech = new System.Windows.Forms.Label();
+            this.iGroupBoxGain = new System.Windows.Forms.GroupBox();
+            this.iTrackBarGainBlue = new System.Windows.Forms.TrackBar();
+            this.iLabelGainBlue = new System.Windows.Forms.Label();
+            this.iTrackBarGainGreen = new System.Windows.Forms.TrackBar();
+            this.iLabelGainGreen = new System.Windows.Forms.Label();
+            this.iTrackBarGainRed = new System.Windows.Forms.TrackBar();
+            this.iLabelGainRed = new System.Windows.Forms.Label();
+            this.iLabelGainRedPercent = new System.Windows.Forms.Label();
+            this.iLabelGainGreenPercent = new System.Windows.Forms.Label();
+            this.iLabelGainBluePercent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
+            this.iGroupBoxGain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarGainBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarGainGreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarGainRed)).BeginInit();
             this.SuspendLayout();
             // 
             // iComboBoxVirtualMonitors
@@ -60,7 +74,8 @@
             // 
             // iButtonRefresh
             // 
-            this.iButtonRefresh.Location = new System.Drawing.Point(397, 227);
+            this.iButtonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.iButtonRefresh.Location = new System.Drawing.Point(462, 452);
             this.iButtonRefresh.Name = "iButtonRefresh";
             this.iButtonRefresh.Size = new System.Drawing.Size(75, 23);
             this.iButtonRefresh.TabIndex = 4;
@@ -154,7 +169,8 @@
             // 
             // iButtonColorReset
             // 
-            this.iButtonColorReset.Location = new System.Drawing.Point(102, 227);
+            this.iButtonColorReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iButtonColorReset.Location = new System.Drawing.Point(100, 452);
             this.iButtonColorReset.Name = "iButtonColorReset";
             this.iButtonColorReset.Size = new System.Drawing.Size(75, 23);
             this.iButtonColorReset.TabIndex = 11;
@@ -164,7 +180,8 @@
             // 
             // iButtonFactoryReset
             // 
-            this.iButtonFactoryReset.Location = new System.Drawing.Point(12, 227);
+            this.iButtonFactoryReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iButtonFactoryReset.Location = new System.Drawing.Point(10, 452);
             this.iButtonFactoryReset.Name = "iButtonFactoryReset";
             this.iButtonFactoryReset.Size = new System.Drawing.Size(84, 23);
             this.iButtonFactoryReset.TabIndex = 12;
@@ -181,11 +198,114 @@
             this.iLabelMonitorTech.TabIndex = 13;
             this.iLabelMonitorTech.Text = "Unknown";
             // 
+            // iGroupBoxGain
+            // 
+            this.iGroupBoxGain.Controls.Add(this.iLabelGainBluePercent);
+            this.iGroupBoxGain.Controls.Add(this.iLabelGainGreenPercent);
+            this.iGroupBoxGain.Controls.Add(this.iLabelGainRedPercent);
+            this.iGroupBoxGain.Controls.Add(this.iTrackBarGainBlue);
+            this.iGroupBoxGain.Controls.Add(this.iLabelGainBlue);
+            this.iGroupBoxGain.Controls.Add(this.iTrackBarGainGreen);
+            this.iGroupBoxGain.Controls.Add(this.iLabelGainGreen);
+            this.iGroupBoxGain.Controls.Add(this.iTrackBarGainRed);
+            this.iGroupBoxGain.Controls.Add(this.iLabelGainRed);
+            this.iGroupBoxGain.Location = new System.Drawing.Point(12, 168);
+            this.iGroupBoxGain.Name = "iGroupBoxGain";
+            this.iGroupBoxGain.Size = new System.Drawing.Size(413, 176);
+            this.iGroupBoxGain.TabIndex = 14;
+            this.iGroupBoxGain.TabStop = false;
+            this.iGroupBoxGain.Text = "Gain";
+            // 
+            // iTrackBarGainBlue
+            // 
+            this.iTrackBarGainBlue.Location = new System.Drawing.Point(130, 121);
+            this.iTrackBarGainBlue.Name = "iTrackBarGainBlue";
+            this.iTrackBarGainBlue.Size = new System.Drawing.Size(203, 45);
+            this.iTrackBarGainBlue.TabIndex = 12;
+            this.iTrackBarGainBlue.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.iTrackBarGainBlue.Scroll += new System.EventHandler(this.iTrackBarGainBlue_Scroll);
+            this.iTrackBarGainBlue.ValueChanged += new System.EventHandler(this.iTrackBarGainBlue_ValueChanged);
+            // 
+            // iLabelGainBlue
+            // 
+            this.iLabelGainBlue.AutoSize = true;
+            this.iLabelGainBlue.Location = new System.Drawing.Point(41, 132);
+            this.iLabelGainBlue.Name = "iLabelGainBlue";
+            this.iLabelGainBlue.Size = new System.Drawing.Size(31, 13);
+            this.iLabelGainBlue.TabIndex = 11;
+            this.iLabelGainBlue.Text = "Blue:";
+            // 
+            // iTrackBarGainGreen
+            // 
+            this.iTrackBarGainGreen.Location = new System.Drawing.Point(130, 70);
+            this.iTrackBarGainGreen.Name = "iTrackBarGainGreen";
+            this.iTrackBarGainGreen.Size = new System.Drawing.Size(203, 45);
+            this.iTrackBarGainGreen.TabIndex = 10;
+            this.iTrackBarGainGreen.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.iTrackBarGainGreen.Scroll += new System.EventHandler(this.iTrackBarGainGreen_Scroll);
+            this.iTrackBarGainGreen.ValueChanged += new System.EventHandler(this.iTrackBarGainGreen_ValueChanged);
+            // 
+            // iLabelGainGreen
+            // 
+            this.iLabelGainGreen.AutoSize = true;
+            this.iLabelGainGreen.Location = new System.Drawing.Point(41, 81);
+            this.iLabelGainGreen.Name = "iLabelGainGreen";
+            this.iLabelGainGreen.Size = new System.Drawing.Size(39, 13);
+            this.iLabelGainGreen.TabIndex = 9;
+            this.iLabelGainGreen.Text = "Green:";
+            // 
+            // iTrackBarGainRed
+            // 
+            this.iTrackBarGainRed.Location = new System.Drawing.Point(130, 19);
+            this.iTrackBarGainRed.Name = "iTrackBarGainRed";
+            this.iTrackBarGainRed.Size = new System.Drawing.Size(203, 45);
+            this.iTrackBarGainRed.TabIndex = 8;
+            this.iTrackBarGainRed.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.iTrackBarGainRed.Scroll += new System.EventHandler(this.iTrackBarGainRed_Scroll);
+            this.iTrackBarGainRed.ValueChanged += new System.EventHandler(this.iTrackBarGainRed_ValueChanged);
+            // 
+            // iLabelGainRed
+            // 
+            this.iLabelGainRed.AutoSize = true;
+            this.iLabelGainRed.Location = new System.Drawing.Point(41, 32);
+            this.iLabelGainRed.Name = "iLabelGainRed";
+            this.iLabelGainRed.Size = new System.Drawing.Size(30, 13);
+            this.iLabelGainRed.TabIndex = 7;
+            this.iLabelGainRed.Text = "Red:";
+            // 
+            // iLabelGainRedPercent
+            // 
+            this.iLabelGainRedPercent.AutoSize = true;
+            this.iLabelGainRedPercent.Location = new System.Drawing.Point(339, 32);
+            this.iLabelGainRedPercent.Name = "iLabelGainRedPercent";
+            this.iLabelGainRedPercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelGainRedPercent.TabIndex = 13;
+            this.iLabelGainRedPercent.Text = "0%";
+            // 
+            // iLabelGainGreenPercent
+            // 
+            this.iLabelGainGreenPercent.AutoSize = true;
+            this.iLabelGainGreenPercent.Location = new System.Drawing.Point(339, 81);
+            this.iLabelGainGreenPercent.Name = "iLabelGainGreenPercent";
+            this.iLabelGainGreenPercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelGainGreenPercent.TabIndex = 14;
+            this.iLabelGainGreenPercent.Text = "0%";
+            // 
+            // iLabelGainBluePercent
+            // 
+            this.iLabelGainBluePercent.AutoSize = true;
+            this.iLabelGainBluePercent.Location = new System.Drawing.Point(339, 132);
+            this.iLabelGainBluePercent.Name = "iLabelGainBluePercent";
+            this.iLabelGainBluePercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelGainBluePercent.TabIndex = 15;
+            this.iLabelGainBluePercent.Text = "0%";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 262);
+            this.ClientSize = new System.Drawing.Size(549, 487);
+            this.Controls.Add(this.iGroupBoxGain);
             this.Controls.Add(this.iLabelMonitorTech);
             this.Controls.Add(this.iButtonFactoryReset);
             this.Controls.Add(this.iButtonColorReset);
@@ -204,6 +324,11 @@
             this.Text = "Monitor Configuration Demo";
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).EndInit();
+            this.iGroupBoxGain.ResumeLayout(false);
+            this.iGroupBoxGain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarGainBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarGainGreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTrackBarGainRed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +351,16 @@
         private System.Windows.Forms.Button iButtonColorReset;
         private System.Windows.Forms.Button iButtonFactoryReset;
         private System.Windows.Forms.Label iLabelMonitorTech;
+        private System.Windows.Forms.GroupBox iGroupBoxGain;
+        private System.Windows.Forms.TrackBar iTrackBarGainGreen;
+        private System.Windows.Forms.Label iLabelGainGreen;
+        private System.Windows.Forms.TrackBar iTrackBarGainRed;
+        private System.Windows.Forms.Label iLabelGainRed;
+        private System.Windows.Forms.TrackBar iTrackBarGainBlue;
+        private System.Windows.Forms.Label iLabelGainBlue;
+        private System.Windows.Forms.Label iLabelGainBluePercent;
+        private System.Windows.Forms.Label iLabelGainGreenPercent;
+        private System.Windows.Forms.Label iLabelGainRedPercent;
     }
 }
 

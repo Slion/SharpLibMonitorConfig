@@ -110,7 +110,7 @@ namespace MonitorConfigDemo
             iButtonFactoryReset.Enabled = pm.SupportsRestoreFactoryDefaults;
             iButtonColorReset.Enabled = pm.SupportsRestoreFactoryColorDefaults;
 
-            //Monitor Technology Type
+            // Monitor Technology Type
             iLabelMonitorTech.Visible = pm.SupportsTechnologyType;
             iLabelMonitorTech.Text = pm.TechnologyTypeName;
 
@@ -118,20 +118,57 @@ namespace MonitorConfigDemo
             iTrackBarBrightness.Enabled = 
                 iLabelBrightness.Enabled = 
                 iLabelBrightnessPercent.Visible = pm.SupportsBrightness;
-            Setting brightness = pm.Brightness;
-            iTrackBarBrightness.Minimum = (int)brightness.Min;
-            iTrackBarBrightness.Maximum = (int)brightness.Max;
-            iTrackBarBrightness.Value = (int)brightness.Current;
-            iTrackBarBrightness.TickFrequency = (iTrackBarBrightness.Maximum - iTrackBarBrightness.Minimum) / 20;
+            SetupTrackBar(iTrackBarBrightness, pm.Brightness);
+            
             // Contrast update
             iTrackBarContrast.Enabled =
                 iLabelContrast.Enabled =
                 iLabelContrastPercent.Visible = pm.SupportsContrast;
-            Setting contrast = pm.Contrast;
-            iTrackBarContrast.Minimum = (int)contrast.Min;
-            iTrackBarContrast.Maximum = (int)contrast.Max;
-            iTrackBarContrast.Value = (int)contrast.Current;
-            iTrackBarContrast.TickFrequency = (iTrackBarContrast.Maximum - iTrackBarContrast.Minimum) / 20;
+            SetupTrackBar(iTrackBarContrast, pm.Contrast);
+
+            // Gain
+            iGroupBoxGain.Enabled = pm.SupportsRgbGain;
+            SetupTrackBar(iTrackBarGainRed, pm.GainRed);
+            SetupTrackBar(iTrackBarGainGreen, pm.GainGreen);
+            SetupTrackBar(iTrackBarGainBlue, pm.GainBlue);
+
+        }
+
+        /// <summary>
+        /// Setup a trackbar from the provided setting.
+        /// </summary>
+        /// <param name="aTrackBar"></param>
+        /// <param name="aSetting"></param>
+        static void SetupTrackBar(TrackBar aTrackBar, Setting aSetting)
+        {
+            aTrackBar.Minimum = (int)aSetting.Min;
+            aTrackBar.Maximum = (int)aSetting.Max;
+            aTrackBar.Value = (int)aSetting.Current;
+            if (aTrackBar.Maximum % 10 == 0)
+            {
+                aTrackBar.TickFrequency = (aTrackBar.Maximum - aTrackBar.Minimum) / 20;
+            }
+            else // Assume mod 2
+            {
+                aTrackBar.TickFrequency = 8;
+            }
+
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aTrackBar"></param>
+        /// <param name="aLabel"></param>
+        /// <param name="aToolTip"></param>
+        static void UpdateTrackBar(TrackBar aTrackBar, Label aLabel, ToolTip aToolTip)
+        {
+            aToolTip.SetToolTip(aTrackBar, aTrackBar.Value.ToString());
+            float max = aTrackBar.Maximum - aTrackBar.Minimum;
+            float current = aTrackBar.Value - aTrackBar.Minimum;
+            int percent = (int)(current / (max / 100));
+            aLabel.Text = percent.ToString() + "%";
         }
 
         /// <summary>
@@ -161,11 +198,7 @@ namespace MonitorConfigDemo
 
         private void iTrackBarBrightness_ValueChanged(object sender, EventArgs e)
         {
-            iToolTip.SetToolTip(iTrackBarBrightness, iTrackBarBrightness.Value.ToString());
-            float max = iTrackBarBrightness.Maximum - iTrackBarBrightness.Minimum;
-            float current = iTrackBarBrightness.Value - iTrackBarBrightness.Minimum;
-            int percent = (int)(max / 100 * current);
-            iLabelBrightnessPercent.Text = percent.ToString() + "%";
+            UpdateTrackBar(iTrackBarBrightness, iLabelBrightnessPercent, iToolTip);
         }
 
         private void iTrackBarBrightness_Scroll(object sender, EventArgs e)
@@ -178,11 +211,7 @@ namespace MonitorConfigDemo
 
         private void iTrackBarContrast_ValueChanged(object sender, EventArgs e)
         {
-            iToolTip.SetToolTip(iTrackBarContrast, iTrackBarContrast.Value.ToString());
-            float max = iTrackBarContrast.Maximum - iTrackBarContrast.Minimum;
-            float current = iTrackBarContrast.Value - iTrackBarContrast.Minimum;
-            int percent = (int)(max / 100 * current);
-            iLabelContrastPercent.Text = percent.ToString() + "%";
+            UpdateTrackBar(iTrackBarContrast, iLabelContrastPercent, iToolTip);
         }
 
         private void iTrackBarContrast_Scroll(object sender, EventArgs e)
@@ -206,5 +235,45 @@ namespace MonitorConfigDemo
             Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset
             UpdatePhysicalMonitor();
         }
+
+        private void iTrackBarGainRed_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTrackBar(iTrackBarGainRed, iLabelGainRedPercent, iToolTip);
+        }
+
+        private void iTrackBarGainRed_Scroll(object sender, EventArgs e)
+        {
+            // Set gain red
+            Setting red = new Setting((uint)iTrackBarGainRed.Minimum, (uint)iTrackBarGainRed.Value, (uint)iTrackBarGainRed.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.GainRed = red;
+        }
+
+        private void iTrackBarGainGreen_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTrackBar(iTrackBarGainGreen, iLabelGainGreenPercent, iToolTip);
+        }
+
+        private void iTrackBarGainGreen_Scroll(object sender, EventArgs e)
+        {
+            // Set gain green
+            Setting green = new Setting((uint)iTrackBarGainGreen.Minimum, (uint)iTrackBarGainGreen.Value, (uint)iTrackBarGainGreen.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.GainGreen = green;
+        }
+
+        private void iTrackBarGainBlue_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTrackBar(iTrackBarGainBlue, iLabelGainBluePercent, iToolTip);
+        }
+
+        private void iTrackBarGainBlue_Scroll(object sender, EventArgs e)
+        {
+            // Set gain red
+            Setting blue = new Setting((uint)iTrackBarGainBlue.Minimum, (uint)iTrackBarGainBlue.Value, (uint)iTrackBarGainBlue.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.GainBlue = blue;
+        }
+
     }
 }

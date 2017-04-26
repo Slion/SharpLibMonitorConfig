@@ -59,6 +59,27 @@ namespace SharpLib::MonitorConfig
             void set(Setting^ aSetting);
         }
 
+        // Gain Red
+        property Setting^ GainRed
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
+        // Gain Green
+        property Setting^ GainGreen
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
+        // Gain Blue
+        property Setting^ GainBlue
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
 
         property String^ Description;
 
@@ -74,6 +95,10 @@ namespace SharpLib::MonitorConfig
         //
         Setting iBrightness;
         Setting iContrast;
+        //
+        Setting iGainRed;
+        Setting iGainGreen;
+        Setting iGainBlue;
         //
         String^ iTechnologyTypeName;
     };
