@@ -49,9 +49,9 @@ namespace SharpLib::MonitorConfig
         // Get our values
         BOOL success = GetMonitorBrightness(iData->hPhysicalMonitor, &min, &current, &max);
         // Set our value
-        iBrightness.iCurrent = current;
-        iBrightness.iMin = min;
-        iBrightness.iMax = max;
+        iBrightness.Current = current;
+        iBrightness.Min = min;
+        iBrightness.Max = max;
         // Provide them
         return %iBrightness;
     }
@@ -59,7 +59,7 @@ namespace SharpLib::MonitorConfig
     ///
     void PhysicalMonitor::Brightness::set(Setting^ aBrigthness)
     {
-        BOOL success = SetMonitorBrightness(iData->hPhysicalMonitor, aBrigthness->iCurrent);
+        BOOL success = SetMonitorBrightness(iData->hPhysicalMonitor, aBrigthness->Current);
     }
 
     ///
@@ -71,9 +71,9 @@ namespace SharpLib::MonitorConfig
         // Get our values
         BOOL success = GetMonitorContrast(iData->hPhysicalMonitor, &min, &current, &max);
         // Set our value
-        iContrast.iCurrent = current;
-        iContrast.iMin = min;
-        iContrast.iMax = max;
+        iContrast.Current = current;
+        iContrast.Min = min;
+        iContrast.Max = max;
         // Provide them
         return %iContrast;
     }
@@ -81,7 +81,7 @@ namespace SharpLib::MonitorConfig
     ///
     void PhysicalMonitor::Contrast::set(Setting^ aContrast)
     {
-        BOOL success = SetMonitorContrast(iData->hPhysicalMonitor, aContrast->iCurrent);
+        BOOL success = SetMonitorContrast(iData->hPhysicalMonitor, aContrast->Current);
     }
     
     ////////// Capabilities checks

@@ -109,18 +109,18 @@ namespace MonitorConfigDemo
                 iLabelBrightness.Enabled = 
                 iLabelBrightnessPercent.Visible = pm.SupportsBrightness;
             Setting brightness = pm.Brightness;
-            iTrackBarBrightness.Minimum = (int)brightness.iMin;
-            iTrackBarBrightness.Maximum = (int)brightness.iMax;
-            iTrackBarBrightness.Value = (int)brightness.iCurrent;
+            iTrackBarBrightness.Minimum = (int)brightness.Min;
+            iTrackBarBrightness.Maximum = (int)brightness.Max;
+            iTrackBarBrightness.Value = (int)brightness.Current;
             iTrackBarBrightness.TickFrequency = (iTrackBarBrightness.Maximum - iTrackBarBrightness.Minimum) / 20;
             // Contrast update
             iTrackBarContrast.Enabled =
                 iLabelContrast.Enabled =
                 iLabelContrastPercent.Visible = pm.SupportsContrast;
             Setting contrast = pm.Contrast;
-            iTrackBarContrast.Minimum = (int)contrast.iMin;
-            iTrackBarContrast.Maximum = (int)contrast.iMax;
-            iTrackBarContrast.Value = (int)contrast.iCurrent;
+            iTrackBarContrast.Minimum = (int)contrast.Min;
+            iTrackBarContrast.Maximum = (int)contrast.Max;
+            iTrackBarContrast.Value = (int)contrast.Current;
             iTrackBarContrast.TickFrequency = (iTrackBarContrast.Maximum - iTrackBarContrast.Minimum) / 20;
         }
 
