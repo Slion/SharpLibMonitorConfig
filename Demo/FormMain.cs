@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows;
 using SharpLib.MonitorConfig;
+using System.Threading;
 
 namespace MonitorConfigDemo
 {
@@ -104,6 +105,11 @@ namespace MonitorConfigDemo
         {
             // Get our physical monitor
             PhysicalMonitor pm = CurrentPhysicalMonitor();
+
+            // Reset buttons
+            iButtonFactoryReset.Enabled = pm.SupportsRestoreFactoryDefaults;
+            iButtonColorReset.Enabled = pm.SupportsRestoreFactoryColorDefaults;
+
             // Brightness update
             iTrackBarBrightness.Enabled = 
                 iLabelBrightness.Enabled = 
@@ -183,5 +189,18 @@ namespace MonitorConfigDemo
             pm.Contrast = contrast;
         }
 
+        private void iButtonFactoryReset_Click(object sender, EventArgs e)
+        {
+            CurrentPhysicalMonitor().RestoreFactoryDefaults();
+            Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset
+            UpdatePhysicalMonitor();
+        }
+
+        private void iButtonColorReset_Click(object sender, EventArgs e)
+        {
+            CurrentPhysicalMonitor().RestoreFactoryColorDefault();
+            Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset
+            UpdatePhysicalMonitor();
+        }
     }
 }

@@ -21,6 +21,10 @@ namespace SharpLib::MonitorConfig
         ~PhysicalMonitor();
         !PhysicalMonitor();
 
+        // Actions
+        void RestoreFactoryDefaults();
+        void RestoreFactoryColorDefault();
+
         // Capability checks
         property bool SupportsBrightness { bool get(); }
         property bool SupportsContrast { bool get(); }
@@ -31,9 +35,9 @@ namespace SharpLib::MonitorConfig
         property bool SupportsTechnologyType { bool get(); }
         property bool SupportsRgbDrive { bool get(); }
         property bool SupportsRgbGain { bool get(); }
-        property bool SupportsRestoreFactoryColourDefaults { bool get(); }
         property bool SupportsRestoreFactoryDefaults { bool get(); }
-        property bool SupportsRestoreFactoryDefaultsEnablesMonitorSettings { bool get(); }
+        property bool SupportsRestoreFactoryColorDefaults { bool get(); }
+        property bool RestoringFactoryDefaultsEnablesMonitorSettings { bool get(); }
 
         // Brightness
         property Setting^ Brightness
@@ -51,6 +55,9 @@ namespace SharpLib::MonitorConfig
 
 
         property String^ Description;
+
+    private:
+        property HANDLE Handle { HANDLE get() { return iData->hPhysicalMonitor; } }
 
     private:
         PHYSICAL_MONITOR* iData; // Used

@@ -18,7 +18,7 @@ namespace SharpLib::MonitorConfig
         // Get capabilities
         DWORD monitorCapabilities=0;
         DWORD supportedColorTemperatures=0;
-        if (!GetMonitorCapabilities(iData->hPhysicalMonitor, &monitorCapabilities, &supportedColorTemperatures))
+        if (!GetMonitorCapabilities(Handle, &monitorCapabilities, &supportedColorTemperatures))
         {
             // TODO: throw exception?
         }
@@ -38,8 +38,24 @@ namespace SharpLib::MonitorConfig
         Description = nullptr;
     }
 
+    ///
+    /// Perform factory reset
+    ///
+    void PhysicalMonitor::RestoreFactoryDefaults()
+    {
+        RestoreMonitorFactoryDefaults(Handle);
+    }
 
+    ///
+    /// Perform factory color reset
+    ///
+    void PhysicalMonitor::RestoreFactoryColorDefault()
+    {
+        RestoreMonitorFactoryColorDefaults(Handle);
+    }
 
+    ///
+    /// 
     ///
     Setting^ PhysicalMonitor::Brightness::get()
     {
@@ -47,7 +63,7 @@ namespace SharpLib::MonitorConfig
         DWORD max=0;
         DWORD current=0;
         // Get our values
-        BOOL success = GetMonitorBrightness(iData->hPhysicalMonitor, &min, &current, &max);
+        BOOL success = GetMonitorBrightness(Handle, &min, &current, &max);
         // Set our value
         iBrightness.Current = current;
         iBrightness.Min = min;
@@ -59,7 +75,7 @@ namespace SharpLib::MonitorConfig
     ///
     void PhysicalMonitor::Brightness::set(Setting^ aBrigthness)
     {
-        BOOL success = SetMonitorBrightness(iData->hPhysicalMonitor, aBrigthness->Current);
+        BOOL success = SetMonitorBrightness(Handle, aBrigthness->Current);
     }
 
     ///
@@ -69,7 +85,7 @@ namespace SharpLib::MonitorConfig
         DWORD max = 0;
         DWORD current = 0;
         // Get our values
-        BOOL success = GetMonitorContrast(iData->hPhysicalMonitor, &min, &current, &max);
+        BOOL success = GetMonitorContrast(Handle, &min, &current, &max);
         // Set our value
         iContrast.Current = current;
         iContrast.Min = min;
@@ -81,7 +97,7 @@ namespace SharpLib::MonitorConfig
     ///
     void PhysicalMonitor::Contrast::set(Setting^ aContrast)
     {
-        BOOL success = SetMonitorContrast(iData->hPhysicalMonitor, aContrast->Current);
+        BOOL success = SetMonitorContrast(Handle, aContrast->Current);
     }
     
     ////////// Capabilities checks
@@ -131,17 +147,20 @@ namespace SharpLib::MonitorConfig
         return (iMonitorCapabilities & MC_CAPS_RED_GREEN_BLUE_GAIN) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRestoreFactoryColourDefaults::get()
-    {
-        return (iMonitorCapabilities & MC_CAPS_RESTORE_FACTORY_COLOR_DEFAULTS) != 0;
-    }
-
     bool PhysicalMonitor::SupportsRestoreFactoryDefaults::get()
     {
         return (iMonitorCapabilities & MC_CAPS_RESTORE_FACTORY_DEFAULTS) != 0;
     }
 
-    bool PhysicalMonitor::SupportsRestoreFactoryDefaultsEnablesMonitorSettings::get()
+    bool PhysicalMonitor::SupportsRestoreFactoryColorDefaults::get()
+    {
+        return (iMonitorCapabilities & MC_CAPS_RESTORE_FACTORY_COLOR_DEFAULTS) != 0;
+    }
+
+    ///
+    /// What this means is explaing there: https://msdn.microsoft.com/en-us/library/dd692969(v=vs.85).aspx
+    /// It's of litle interrests to us. 
+    bool PhysicalMonitor::RestoringFactoryDefaultsEnablesMonitorSettings::get()
     {
         return (iMonitorCapabilities & MC_RESTORE_FACTORY_DEFAULTS_ENABLES_MONITOR_SETTINGS) != 0;
     }

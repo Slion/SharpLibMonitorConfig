@@ -41,6 +41,8 @@
             this.iLabelContrastPercent = new System.Windows.Forms.Label();
             this.iTrackBarContrast = new System.Windows.Forms.TrackBar();
             this.iLabelContrast = new System.Windows.Forms.Label();
+            this.iButtonColorReset = new System.Windows.Forms.Button();
+            this.iButtonFactoryReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.SuspendLayout();
@@ -149,11 +151,33 @@
             this.iLabelContrast.TabIndex = 8;
             this.iLabelContrast.Text = "Contrast:";
             // 
+            // iButtonColorReset
+            // 
+            this.iButtonColorReset.Location = new System.Drawing.Point(102, 227);
+            this.iButtonColorReset.Name = "iButtonColorReset";
+            this.iButtonColorReset.Size = new System.Drawing.Size(75, 23);
+            this.iButtonColorReset.TabIndex = 11;
+            this.iButtonColorReset.Text = "Color Reset";
+            this.iButtonColorReset.UseVisualStyleBackColor = true;
+            this.iButtonColorReset.Click += new System.EventHandler(this.iButtonColorReset_Click);
+            // 
+            // iButtonFactoryReset
+            // 
+            this.iButtonFactoryReset.Location = new System.Drawing.Point(12, 227);
+            this.iButtonFactoryReset.Name = "iButtonFactoryReset";
+            this.iButtonFactoryReset.Size = new System.Drawing.Size(84, 23);
+            this.iButtonFactoryReset.TabIndex = 12;
+            this.iButtonFactoryReset.Text = "Factory Reset";
+            this.iButtonFactoryReset.UseVisualStyleBackColor = true;
+            this.iButtonFactoryReset.Click += new System.EventHandler(this.iButtonFactoryReset_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 262);
+            this.Controls.Add(this.iButtonFactoryReset);
+            this.Controls.Add(this.iButtonColorReset);
             this.Controls.Add(this.iLabelContrastPercent);
             this.Controls.Add(this.iTrackBarContrast);
             this.Controls.Add(this.iLabelContrast);
@@ -188,6 +212,8 @@
         private System.Windows.Forms.Label iLabelContrastPercent;
         private System.Windows.Forms.TrackBar iTrackBarContrast;
         private System.Windows.Forms.Label iLabelContrast;
+        private System.Windows.Forms.Button iButtonColorReset;
+        private System.Windows.Forms.Button iButtonFactoryReset;
     }
 }
 
