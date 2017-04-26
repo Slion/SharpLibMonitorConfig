@@ -14,20 +14,23 @@ namespace SharpLib::MonitorConfig
     {
         // Provide description
         Description = gcnew System::String(iData->szPhysicalMonitorDescription);
+        Construct();
+    }
 
+    bool PhysicalMonitor::Construct()
+    {
         //
         iTechnologyTypeName = String::Empty;
 
         // Get capabilities
-        DWORD monitorCapabilities=0;
-        DWORD supportedColorTemperatures=0;
-        if (!GetMonitorCapabilities(Handle, &monitorCapabilities, &supportedColorTemperatures))
-        {
-            // TODO: throw exception?
-        }
+        DWORD monitorCapabilities = 0;
+        DWORD supportedColorTemperatures = 0;
+        bool online = GetMonitorCapabilities(Handle, &monitorCapabilities, &supportedColorTemperatures)==TRUE;
 
         iMonitorCapabilities = monitorCapabilities;
         iSupportedColorTemperatures = supportedColorTemperatures;
+
+        return online;
     }
 
     PhysicalMonitor::~PhysicalMonitor()

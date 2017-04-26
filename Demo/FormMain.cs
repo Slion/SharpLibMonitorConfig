@@ -224,15 +224,33 @@ namespace MonitorConfigDemo
 
         private void iButtonFactoryReset_Click(object sender, EventArgs e)
         {
-            CurrentPhysicalMonitor().RestoreFactoryDefaults();
-            Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset
+            // Initiate reset
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.RestoreFactoryDefaults();
+            // Wait for the monitor to come back online
+            int max = 10;
+            while (!pm.Construct() && max >= 0)
+            {
+                max--;
+                Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset                
+            }
+            // Update our UI
             UpdatePhysicalMonitor();
         }
 
         private void iButtonColorReset_Click(object sender, EventArgs e)
         {
-            CurrentPhysicalMonitor().RestoreFactoryColorDefault();
-            Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset
+            // Initiate reset
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.RestoreFactoryColorDefault();
+            // Wait for the monitor to come back online
+            int max = 10;
+            while (!pm.Construct() && max>=0)
+            {
+                max--;
+                Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset                
+            }
+            // Update our UI
             UpdatePhysicalMonitor();
         }
 

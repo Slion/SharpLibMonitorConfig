@@ -21,6 +21,8 @@ namespace SharpLib::MonitorConfig
         ~PhysicalMonitor();
         !PhysicalMonitor();
 
+        bool Construct();
+
         // Actions
         void RestoreFactoryDefaults();
         void RestoreFactoryColorDefault();
