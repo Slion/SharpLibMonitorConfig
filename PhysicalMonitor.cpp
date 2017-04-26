@@ -15,6 +15,9 @@ namespace SharpLib::MonitorConfig
         // Provide description
         Description = gcnew System::String(iData->szPhysicalMonitorDescription);
 
+        //
+        iTechnologyTypeName = String::Empty;
+
         // Get capabilities
         DWORD monitorCapabilities=0;
         DWORD supportedColorTemperatures=0;
@@ -53,6 +56,62 @@ namespace SharpLib::MonitorConfig
     {
         RestoreMonitorFactoryColorDefaults(Handle);
     }
+
+    ///
+    void PhysicalMonitor::GetTechnologyTypeName()
+    {
+        MC_DISPLAY_TECHNOLOGY_TYPE type;
+        if (GetMonitorTechnologyType(Handle, &type))
+        {
+            switch (type)
+            {
+            case MC_SHADOW_MASK_CATHODE_RAY_TUBE:
+                iTechnologyTypeName = "Shadow Mask Cathode Ray Tube";
+                break;
+            case MC_APERTURE_GRILL_CATHODE_RAY_TUBE:
+                iTechnologyTypeName = "Aperture Grill Cathode Ray Tube";
+                break;
+            case MC_THIN_FILM_TRANSISTOR:
+                iTechnologyTypeName = "TFT LCD";
+                break;
+            case MC_LIQUID_CRYSTAL_ON_SILICON:
+                iTechnologyTypeName = "LCD";
+                break;
+            case MC_PLASMA:
+                iTechnologyTypeName = "Plasma";
+                break;
+            case MC_ORGANIC_LIGHT_EMITTING_DIODE:
+                iTechnologyTypeName = "OLED";
+                break;
+            case MC_ELECTROLUMINESCENT:
+                iTechnologyTypeName = "Electroluminescent";
+                break;
+            case MC_MICROELECTROMECHANICAL:
+                iTechnologyTypeName = "Microelectromechanical";
+                break;
+            case MC_FIELD_EMISSION_DEVICE:
+                iTechnologyTypeName = "Field Emission Device";
+                break;         
+            }
+
+            return;
+        }
+
+        iTechnologyTypeName = "Unknown";
+    }
+
+    ///
+    String^ PhysicalMonitor::TechnologyTypeName::get()
+    {
+        if (String::IsNullOrEmpty(iTechnologyTypeName))
+        {
+            GetTechnologyTypeName();
+        }
+
+        return iTechnologyTypeName;
+    }
+
+
 
     ///
     /// 

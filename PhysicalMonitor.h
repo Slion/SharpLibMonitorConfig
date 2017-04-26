@@ -25,6 +25,12 @@ namespace SharpLib::MonitorConfig
         void RestoreFactoryDefaults();
         void RestoreFactoryColorDefault();
 
+        // Type
+        property String^ TechnologyTypeName
+        { 
+            String^ get();
+        }
+
         // Capability checks
         property bool SupportsBrightness { bool get(); }
         property bool SupportsContrast { bool get(); }
@@ -59,6 +65,8 @@ namespace SharpLib::MonitorConfig
     private:
         property HANDLE Handle { HANDLE get() { return iData->hPhysicalMonitor; } }
 
+        void GetTechnologyTypeName();
+
     private:
         PHYSICAL_MONITOR* iData; // Used
         DWORD iMonitorCapabilities;
@@ -66,5 +74,7 @@ namespace SharpLib::MonitorConfig
         //
         Setting iBrightness;
         Setting iContrast;
+        //
+        String^ iTechnologyTypeName;
     };
 }

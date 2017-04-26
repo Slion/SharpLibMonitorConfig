@@ -43,6 +43,7 @@
             this.iLabelContrast = new System.Windows.Forms.Label();
             this.iButtonColorReset = new System.Windows.Forms.Button();
             this.iButtonFactoryReset = new System.Windows.Forms.Button();
+            this.iLabelMonitorTech = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.SuspendLayout();
@@ -171,11 +172,21 @@
             this.iButtonFactoryReset.UseVisualStyleBackColor = true;
             this.iButtonFactoryReset.Click += new System.EventHandler(this.iButtonFactoryReset_Click);
             // 
+            // iLabelMonitorTech
+            // 
+            this.iLabelMonitorTech.AutoSize = true;
+            this.iLabelMonitorTech.Location = new System.Drawing.Point(357, 42);
+            this.iLabelMonitorTech.Name = "iLabelMonitorTech";
+            this.iLabelMonitorTech.Size = new System.Drawing.Size(53, 13);
+            this.iLabelMonitorTech.TabIndex = 13;
+            this.iLabelMonitorTech.Text = "Unknown";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 262);
+            this.Controls.Add(this.iLabelMonitorTech);
             this.Controls.Add(this.iButtonFactoryReset);
             this.Controls.Add(this.iButtonColorReset);
             this.Controls.Add(this.iLabelContrastPercent);
@@ -214,6 +225,7 @@
         private System.Windows.Forms.Label iLabelContrast;
         private System.Windows.Forms.Button iButtonColorReset;
         private System.Windows.Forms.Button iButtonFactoryReset;
+        private System.Windows.Forms.Label iLabelMonitorTech;
     }
 }
 

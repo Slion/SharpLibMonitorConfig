@@ -110,6 +110,10 @@ namespace MonitorConfigDemo
             iButtonFactoryReset.Enabled = pm.SupportsRestoreFactoryDefaults;
             iButtonColorReset.Enabled = pm.SupportsRestoreFactoryColorDefaults;
 
+            //Monitor Technology Type
+            iLabelMonitorTech.Visible = pm.SupportsTechnologyType;
+            iLabelMonitorTech.Text = pm.TechnologyTypeName;
+
             // Brightness update
             iTrackBarBrightness.Enabled = 
                 iLabelBrightness.Enabled = 
