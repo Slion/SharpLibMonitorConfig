@@ -280,6 +280,21 @@ namespace MonitorConfigDemo
         /// <summary>
         /// 
         /// </summary>
+        private void WaitForPhysicalMonitorToComeBackOnline()
+        {
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            // Wait for the monitor to come back online
+            int max = 40;
+            while (!pm.Construct() && max >= 0)
+            {
+                max--;
+                Thread.Sleep(250); // Added that delay as Dell P2312H is not responsive immediately after reset                
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void iButtonRefresh_Click(object sender, EventArgs e)
@@ -323,13 +338,7 @@ namespace MonitorConfigDemo
             // Initiate reset
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.RestoreFactoryDefaults();
-            // Wait for the monitor to come back online
-            int max = 10;
-            while (!pm.Construct() && max >= 0)
-            {
-                max--;
-                Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset                
-            }
+            WaitForPhysicalMonitorToComeBackOnline();
             // Update our UI
             UpdatePhysicalMonitor();
         }
@@ -339,13 +348,7 @@ namespace MonitorConfigDemo
             // Initiate reset
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.RestoreFactoryColorDefault();
-            // Wait for the monitor to come back online
-            int max = 10;
-            while (!pm.Construct() && max>=0)
-            {
-                max--;
-                Thread.Sleep(1000); // Added that delay as Dell P2312H is not responsive immediately after reset                
-            }
+            WaitForPhysicalMonitorToComeBackOnline();
             // Update our UI
             UpdatePhysicalMonitor();
         }
@@ -400,8 +403,9 @@ namespace MonitorConfigDemo
         {
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.ColorTemperature = (ColorTemperature)iComboBoxColorTemperature.SelectedItem;
+            WaitForPhysicalMonitorToComeBackOnline(); // Dell U2413 was being too slow again
             // We will need to fetch the new color settings
-            // In fact changing color temperature often just changes color gain to some predefined value
+            // In fact changing color temperature often just changes color gain to some predefined value            
             UpdatePhysicalMonitor();
         }
 
