@@ -31,6 +31,7 @@ namespace MonitorConfigDemo
         /// <param name="e"></param>
         private void iComboBoxVirtualMonitors_SelectedIndexChanged(object sender, EventArgs e)
         {
+            iLabelDeviceName.Text = CurrentVirtualMonitor().DeviceName;
             PopulatePhysicalMonitors();
         }
 
@@ -113,7 +114,7 @@ namespace MonitorConfigDemo
             // Populate virtual monitor list
             foreach (VirtualMonitor m in iMonitors.VirtualMonitors)
             {
-                String itemText = m.Name + " ( " + m.Rect.Size.Width + " x " + m.Rect.Size.Height + " )";
+                String itemText = m.FriendlyName + " ( " + m.Rect.Size.Width + " x " + m.Rect.Size.Height + " )";
                 if (m.IsPrimary())
                 {
                     // Mark primary display
@@ -137,7 +138,7 @@ namespace MonitorConfigDemo
         {
             iComboBoxPhysicalMonitors.Items.Clear();
             // Populate our physical monitor accordingly
-            VirtualMonitor vm = iMonitors.VirtualMonitors[iComboBoxVirtualMonitors.SelectedIndex];
+            VirtualMonitor vm = CurrentVirtualMonitor();
             foreach (PhysicalMonitor pm in vm.PhysicalMonitors)
             {
                 iComboBoxPhysicalMonitors.Items.Add(pm.Description);
@@ -263,8 +264,17 @@ namespace MonitorConfigDemo
         /// <returns></returns>
         private PhysicalMonitor CurrentPhysicalMonitor()
         {
-            PhysicalMonitor pm = iMonitors.VirtualMonitors[iComboBoxVirtualMonitors.SelectedIndex].PhysicalMonitors[iComboBoxPhysicalMonitors.SelectedIndex];
+            PhysicalMonitor pm = CurrentVirtualMonitor().PhysicalMonitors[iComboBoxPhysicalMonitors.SelectedIndex];
             return pm;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private VirtualMonitor CurrentVirtualMonitor()
+        {
+            return iMonitors.VirtualMonitors[iComboBoxVirtualMonitors.SelectedIndex];
         }
 
         /// <summary>

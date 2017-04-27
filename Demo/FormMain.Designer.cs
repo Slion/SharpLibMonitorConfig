@@ -57,6 +57,7 @@
             this.iLabelColorTemperature = new System.Windows.Forms.Label();
             this.iComboBoxColorTemperature = new System.Windows.Forms.ComboBox();
             this.iCheckBoxColorTemperatureUnlock = new System.Windows.Forms.CheckBox();
+            this.iLabelDeviceName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.iGroupBoxGain.SuspendLayout();
@@ -334,11 +335,21 @@
             this.iCheckBoxColorTemperatureUnlock.UseVisualStyleBackColor = true;
             this.iCheckBoxColorTemperatureUnlock.CheckedChanged += new System.EventHandler(this.iCheckBoxColorTemperatureUnlock_CheckedChanged);
             // 
+            // iLabelDeviceName
+            // 
+            this.iLabelDeviceName.AutoSize = true;
+            this.iLabelDeviceName.Location = new System.Drawing.Point(357, 15);
+            this.iLabelDeviceName.Name = "iLabelDeviceName";
+            this.iLabelDeviceName.Size = new System.Drawing.Size(53, 13);
+            this.iLabelDeviceName.TabIndex = 18;
+            this.iLabelDeviceName.Text = "Unknown";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 487);
+            this.Controls.Add(this.iLabelDeviceName);
             this.Controls.Add(this.iCheckBoxColorTemperatureUnlock);
             this.Controls.Add(this.iLabelColorTemperature);
             this.Controls.Add(this.iComboBoxColorTemperature);
@@ -401,6 +412,7 @@
         private System.Windows.Forms.Label iLabelColorTemperature;
         private System.Windows.Forms.ComboBox iComboBoxColorTemperature;
         private System.Windows.Forms.CheckBox iCheckBoxColorTemperatureUnlock;
+        private System.Windows.Forms.Label iLabelDeviceName;
     }
 }
 

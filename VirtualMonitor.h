@@ -17,7 +17,7 @@ namespace SharpLib::MonitorConfig
     {
     public:
         // Constructor
-        VirtualMonitor(HMONITOR aHandle);
+        VirtualMonitor(HMONITOR aHandle, int aIndex);
         // Destructor
         ~VirtualMonitor();
         // Finalizer
@@ -26,11 +26,16 @@ namespace SharpLib::MonitorConfig
         bool IsPrimary();
       
         /// The name of this monitor
-        property String^ Name;
+        property String^ DeviceName;
+        /// The friendly name of this monitor
+        property String^ FriendlyName;
         /// Rectangle defining our monitor, check its size for monitor resolution
         property Rect Rect;
         /// A virtual monitor has a collection of physical monitor
         property List<PhysicalMonitor^>^ PhysicalMonitors;
+            
+    private:
+        void LoadFriendlyName(int aIndex);
 
     private:
         HMONITOR iHandle;

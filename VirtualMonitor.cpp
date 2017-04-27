@@ -7,7 +7,7 @@ namespace SharpLib::MonitorConfig
 {
     /**
     */
-    VirtualMonitor::VirtualMonitor(HMONITOR aHandle) : iHandle(aHandle)
+    VirtualMonitor::VirtualMonitor(HMONITOR aHandle, int aIndex) : iHandle(aHandle)
     {
         iInfo = new MONITORINFOEX();
         iInfo->cbSize = sizeof(MONITORINFOEX); //Need to set this to allow next function to identify Structure type
@@ -18,9 +18,22 @@ namespace SharpLib::MonitorConfig
             // Throw exception?
         }
 
-        Name = gcnew System::String(iInfo->szDevice);
+        DeviceName = gcnew System::String(iInfo->szDevice);
         PhysicalMonitors = gcnew List<PhysicalMonitor^>();
-        //
+        
+        /*
+        DISPLAY_DEVICE displayDevice;
+        displayDevice.cb = sizeof(DISPLAY_DEVICE);
+        BOOL res = EnumDisplayDevices(iInfo->szDevice, 0, &displayDevice, 0);
+
+        DEVMODE devMode;
+        devMode.dmSize = sizeof(DEVMODE);
+        res = EnumDisplaySettings(iInfo->szDevice, ENUM_CURRENT_SETTINGS, &devMode);
+        */
+
+        LoadFriendlyName(aIndex);
+
+        //Build a Rect to be able to get the resolution conveniently
         System::Windows::Point pt1(iInfo->rcMonitor.left, iInfo->rcMonitor.bottom);
         System::Windows::Point pt2(iInfo->rcMonitor.right, iInfo->rcMonitor.top);
         Rect = System::Windows::Rect(pt1,pt2);
@@ -57,8 +70,8 @@ namespace SharpLib::MonitorConfig
     VirtualMonitor::!VirtualMonitor()
     {
         // Taking care of managed resources first, I guess
-        delete Name;
-        Name = nullptr;
+        delete DeviceName;
+        DeviceName = nullptr;
 
         // Explicitly destroy our object, me thing that's like Dispose in C#
         if (PhysicalMonitors != nullptr)
@@ -89,6 +102,62 @@ namespace SharpLib::MonitorConfig
         }
 
         return (iInfo->dwFlags & MONITORINFOF_PRIMARY) == MONITORINFOF_PRIMARY;
+    }
+
+    ///
+    /// That does not make sense if the monitor is actually virtual but who cares for now
+    ///
+    void VirtualMonitor::LoadFriendlyName(int aIndex)
+    {
+        // Set default
+        FriendlyName = String::Empty;
+
+        UINT32 pathCount = 0;
+        UINT32 modeCount = 0;
+        LONG err = GetDisplayConfigBufferSizes(QDC_ONLY_ACTIVE_PATHS, &pathCount, &modeCount);
+        if (err != ERROR_SUCCESS)
+        {
+            return;
+        }
+
+        DISPLAYCONFIG_PATH_INFO* displayPaths = new DISPLAYCONFIG_PATH_INFO[pathCount];
+        DISPLAYCONFIG_MODE_INFO* displayModes = new DISPLAYCONFIG_MODE_INFO[modeCount];
+
+        err = QueryDisplayConfig(QDC_ONLY_ACTIVE_PATHS, &pathCount, displayPaths, &modeCount, displayModes, 0);
+        if (err != ERROR_SUCCESS)
+        {            
+            delete displayPaths;
+            delete displayModes;
+            return;
+        }
+
+        int modeTargetCount = 0;
+        for (UINT32 i = 0; i < modeCount; i++)
+        {
+            if (displayModes[i].infoType == DISPLAYCONFIG_MODE_INFO_TYPE_TARGET)
+            {
+                if (modeTargetCount == aIndex) // Is that the proper display, clumsy OMG
+                {
+                    // Now fetch that bloody name
+                    DISPLAYCONFIG_TARGET_DEVICE_NAME deviceName;
+                    deviceName.header.size = sizeof(DISPLAYCONFIG_TARGET_DEVICE_NAME);
+                    deviceName.header.adapterId = displayModes[i].adapterId;
+                    deviceName.header.id = displayModes[i].id;
+                    deviceName.header.type = DISPLAYCONFIG_DEVICE_INFO_GET_TARGET_NAME;
+                    err = DisplayConfigGetDeviceInfo(&deviceName.header);
+                    if (err == ERROR_SUCCESS)
+                    {
+                        FriendlyName = gcnew String(deviceName.monitorFriendlyDeviceName);
+                        break;
+                    }
+                }
+                modeTargetCount++;
+            }
+        }
+
+        // Clean-up
+        delete displayPaths;
+        delete displayModes;
     }
 
 
