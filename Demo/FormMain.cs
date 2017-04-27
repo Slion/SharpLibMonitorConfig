@@ -21,8 +21,6 @@ namespace MonitorConfigDemo
         {
             InitializeComponent();
 
-            PopulateColorTemperature();
-
             UpdateMonitors();           
         }
 
@@ -41,11 +39,69 @@ namespace MonitorConfigDemo
         /// </summary>
         private void PopulateColorTemperature()
         {
-            //SharpLib.MonitorConfig
-            foreach (ColorTemperature t in Enum.GetValues(typeof(ColorTemperature)))
+            //
+            iComboBoxColorTemperature.Items.Clear();
+            //
+            if (iCheckBoxColorTemperatureUnlock.Checked)
             {
-                iComboBoxColorTemperature.Items.Add(t);
+                // Unlock mode provides all choices
+                // This was designed to be able to test Dell monitors not reporting capabilities properly
+                foreach (ColorTemperature t in Enum.GetValues(typeof(ColorTemperature)))
+                {
+                    iComboBoxColorTemperature.Items.Add(t);
+                }
+
+                return;
             }
+
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            ColorTemperature current = pm.ColorTemperature;
+            //
+            iComboBoxColorTemperature.Items.Add(ColorTemperature.Unknown);
+
+            // Add supported color temperature to our combo box
+            // For those Dell monitors not reporting supported color temperature we added the current check
+            // That makes sure the current profile is in the combo box
+
+            if (pm.SupportsColorTemperature4000K || current== ColorTemperature.K4000)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K4000);
+            }
+
+            if (pm.SupportsColorTemperature5000K || current == ColorTemperature.K5000)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K5000);
+            }
+
+            if (pm.SupportsColorTemperature6500K || current == ColorTemperature.K6500)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K6500);
+            }
+
+            if (pm.SupportsColorTemperature7500K || current == ColorTemperature.K7500)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K7500);
+            }
+
+            if (pm.SupportsColorTemperature8200K || current == ColorTemperature.K8200)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K8200);
+            }
+
+            if (pm.SupportsColorTemperature9300K || current == ColorTemperature.K9300)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K9300);
+            }
+
+            if (pm.SupportsColorTemperature10000K || current == ColorTemperature.K10000)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K10000);
+            }
+
+            if (pm.SupportsColorTemperature11500K || current == ColorTemperature.K11500)
+            {
+                iComboBoxColorTemperature.Items.Add(ColorTemperature.K11500);
+            }            
         }
 
         /// <summary>
@@ -101,8 +157,9 @@ namespace MonitorConfigDemo
         {
             // Color temperature
             PhysicalMonitor pm = CurrentPhysicalMonitor();
+            PopulateColorTemperature();
             // We don't enforce disabling color temperature as notably Dell P2312H supports it but pretends it does not.
-            //iComboBoxColorTemperature.Enabled = pm.SupportsColorTemperature;
+            iComboBoxColorTemperature.Enabled = iCheckBoxColorTemperatureUnlock.Checked || pm.SupportsColorTemperature;
             iComboBoxColorTemperature.SelectedItem = pm.ColorTemperature;
         }
 
@@ -336,6 +393,11 @@ namespace MonitorConfigDemo
             // We will need to fetch the new color settings
             // In fact changing color temperature often just changes color gain to some predefined value
             UpdatePhysicalMonitor();
+        }
+
+        private void iCheckBoxColorTemperatureUnlock_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateColorTemperature();
         }
     }
 }

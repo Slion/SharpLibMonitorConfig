@@ -56,6 +56,7 @@
             this.iLabelGainRed = new System.Windows.Forms.Label();
             this.iLabelColorTemperature = new System.Windows.Forms.Label();
             this.iComboBoxColorTemperature = new System.Windows.Forms.ComboBox();
+            this.iCheckBoxColorTemperatureUnlock = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.iGroupBoxGain.SuspendLayout();
@@ -322,11 +323,23 @@
             this.iComboBoxColorTemperature.SelectedIndexChanged += new System.EventHandler(this.iComboBoxColorTemperature_SelectedIndexChanged);
             this.iComboBoxColorTemperature.SelectionChangeCommitted += new System.EventHandler(this.iComboBoxColorTemperature_SelectionChangeCommitted);
             // 
+            // iCheckBoxColorTemperatureUnlock
+            // 
+            this.iCheckBoxColorTemperatureUnlock.AutoSize = true;
+            this.iCheckBoxColorTemperatureUnlock.Location = new System.Drawing.Point(375, 171);
+            this.iCheckBoxColorTemperatureUnlock.Name = "iCheckBoxColorTemperatureUnlock";
+            this.iCheckBoxColorTemperatureUnlock.Size = new System.Drawing.Size(60, 17);
+            this.iCheckBoxColorTemperatureUnlock.TabIndex = 17;
+            this.iCheckBoxColorTemperatureUnlock.Text = "Unlock";
+            this.iCheckBoxColorTemperatureUnlock.UseVisualStyleBackColor = true;
+            this.iCheckBoxColorTemperatureUnlock.CheckedChanged += new System.EventHandler(this.iCheckBoxColorTemperatureUnlock_CheckedChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 487);
+            this.Controls.Add(this.iCheckBoxColorTemperatureUnlock);
             this.Controls.Add(this.iLabelColorTemperature);
             this.Controls.Add(this.iComboBoxColorTemperature);
             this.Controls.Add(this.iGroupBoxGain);
@@ -387,6 +400,7 @@
         private System.Windows.Forms.Label iLabelGainRedPercent;
         private System.Windows.Forms.Label iLabelColorTemperature;
         private System.Windows.Forms.ComboBox iComboBoxColorTemperature;
+        private System.Windows.Forms.CheckBox iCheckBoxColorTemperatureUnlock;
     }
 }
 

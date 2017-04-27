@@ -270,11 +270,6 @@ namespace SharpLib::MonitorConfig
         return (iMonitorCapabilities & MC_CAPS_CONTRAST) != 0;
     }
 
-    bool PhysicalMonitor::SupportsColorTemperature::get()
-    {
-        return (iMonitorCapabilities & MC_CAPS_COLOR_TEMPERATURE) != 0;
-    }
-
     bool PhysicalMonitor::SupportsDegauss::get()
     {
         return (iMonitorCapabilities & MC_CAPS_DEGAUSS) != 0;
@@ -323,6 +318,50 @@ namespace SharpLib::MonitorConfig
         return (iMonitorCapabilities & MC_RESTORE_FACTORY_DEFAULTS_ENABLES_MONITOR_SETTINGS) != 0;
     }
 
+    bool PhysicalMonitor::SupportsColorTemperature::get()
+    {
+        return (iMonitorCapabilities & MC_CAPS_COLOR_TEMPERATURE) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature4000K::get()
+    { 
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_4000K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature5000K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_5000K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature6500K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_6500K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature7500K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_7500K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature8200K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_8200K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature9300K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_9300K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature10000K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_10000K) != 0;
+    }
+
+    bool PhysicalMonitor::SupportsColorTemperature11500K::get()
+    {
+        return (iSupportedColorTemperatures & MC_SUPPORTED_COLOR_TEMPERATURE_11500K) != 0;
+    }
 
 }
 

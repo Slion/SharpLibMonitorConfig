@@ -36,8 +36,7 @@ namespace SharpLib::MonitorConfig
 
         // Capability checks
         property bool SupportsBrightness { bool get(); }
-        property bool SupportsContrast { bool get(); }
-        property bool SupportsColorTemperature { bool get(); }
+        property bool SupportsContrast { bool get(); }        
         property bool SupportsDegauss { bool get(); }
         property bool SupportsDisplayAreaPosition { bool get(); }
         property bool SupportsDisplayAreaSize { bool get(); }
@@ -47,6 +46,16 @@ namespace SharpLib::MonitorConfig
         property bool SupportsRestoreFactoryDefaults { bool get(); }
         property bool SupportsRestoreFactoryColorDefaults { bool get(); }
         property bool RestoringFactoryDefaultsEnablesMonitorSettings { bool get(); }
+        // Color temperatures
+        property bool SupportsColorTemperature { bool get(); }
+        property bool SupportsColorTemperature4000K { bool get(); }
+        property bool SupportsColorTemperature5000K { bool get(); }
+        property bool SupportsColorTemperature6500K { bool get(); }
+        property bool SupportsColorTemperature7500K { bool get(); }
+        property bool SupportsColorTemperature8200K { bool get(); }
+        property bool SupportsColorTemperature9300K { bool get(); }
+        property bool SupportsColorTemperature10000K { bool get(); }
+        property bool SupportsColorTemperature11500K { bool get(); }
 
         // Brightness
         property Setting^ Brightness
