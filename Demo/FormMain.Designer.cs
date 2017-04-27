@@ -370,6 +370,7 @@
             this.Controls.Add(this.iComboBoxVirtualMonitors);
             this.Name = "FormMain";
             this.Text = "Monitor Configuration Demo";
+            this.Shown += new System.EventHandler(this.FormMain_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).EndInit();
             this.iGroupBoxGain.ResumeLayout(false);

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows;
 using SharpLib.MonitorConfig;
 using System.Threading;
+using Squirrel;
 
 namespace MonitorConfigDemo
 {
@@ -21,7 +22,8 @@ namespace MonitorConfigDemo
         {
             InitializeComponent();
 
-            UpdateMonitors();           
+            UpdateMonitors();
+                                  
         }
 
         /// <summary>
@@ -412,6 +414,17 @@ namespace MonitorConfigDemo
         private void iCheckBoxColorTemperatureUnlock_CheckedChanged(object sender, EventArgs e)
         {
             UpdateColorTemperature();
+        }
+
+        async private void FormMain_Shown(object sender, EventArgs e)
+        {
+            // Check for application update
+#if !DEBUG
+            using (var mgr = new UpdateManager("http://publish.slions.net/MonitorConfigDemo"))
+            {
+                await mgr.UpdateApp();
+            }
+#endif
         }
     }
 }
