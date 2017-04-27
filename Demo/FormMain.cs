@@ -11,6 +11,7 @@ using System.Windows;
 using SharpLib.MonitorConfig;
 using System.Threading;
 using Squirrel;
+using System.Diagnostics;
 
 namespace MonitorConfigDemo
 {
@@ -23,7 +24,12 @@ namespace MonitorConfigDemo
             InitializeComponent();
 
             UpdateMonitors();
-                                  
+
+            // Show version in title bar
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fvi.FileVersion;
+            Text += " - v" + version;
         }
 
         /// <summary>
