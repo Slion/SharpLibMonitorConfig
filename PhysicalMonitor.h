@@ -3,6 +3,7 @@
 #include <PhysicalMonitorEnumerationAPI.h>
 #include <HighLevelMonitorConfigurationAPI.h>
 #include "Setting.h"
+#include "ColorTemperature.h"
 
 using namespace System;
 
@@ -36,7 +37,7 @@ namespace SharpLib::MonitorConfig
         // Capability checks
         property bool SupportsBrightness { bool get(); }
         property bool SupportsContrast { bool get(); }
-        property bool SupportsColourTemperature { bool get(); }
+        property bool SupportsColorTemperature { bool get(); }
         property bool SupportsDegauss { bool get(); }
         property bool SupportsDisplayAreaPosition { bool get(); }
         property bool SupportsDisplayAreaSize { bool get(); }
@@ -59,6 +60,13 @@ namespace SharpLib::MonitorConfig
         {
             Setting^ get();
             void set(Setting^ aSetting);
+        }
+
+        // Color temperature
+        property SharpLib::MonitorConfig::ColorTemperature ColorTemperature
+        {
+            SharpLib::MonitorConfig::ColorTemperature get();
+            void set(SharpLib::MonitorConfig::ColorTemperature aColorTemperature);
         }
 
         // Gain Red

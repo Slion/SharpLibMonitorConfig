@@ -140,6 +140,10 @@ namespace SharpLib::MonitorConfig
         BOOL success = SetMonitorBrightness(Handle, aBrigthness->Current);
     }
 
+    //
+    // Constrast
+    //
+
     ///
     Setting^ PhysicalMonitor::Contrast::get()
     {
@@ -161,6 +165,26 @@ namespace SharpLib::MonitorConfig
     {
         BOOL success = SetMonitorContrast(Handle, aContrast->Current);
     }
+
+    //
+    // Color Temperature
+    //
+
+    ColorTemperature PhysicalMonitor::ColorTemperature::get()
+    {
+        SharpLib::MonitorConfig::ColorTemperature t = SharpLib::MonitorConfig::ColorTemperature::Unknown;
+        MC_COLOR_TEMPERATURE temp = MC_COLOR_TEMPERATURE_UNKNOWN;
+        BOOL success = GetMonitorColorTemperature(Handle, &temp);
+        t = (SharpLib::MonitorConfig::ColorTemperature)temp;
+        return t;
+    }
+
+    void PhysicalMonitor::ColorTemperature::set(SharpLib::MonitorConfig::ColorTemperature aColorTemperature)
+    {
+        MC_COLOR_TEMPERATURE temp = (MC_COLOR_TEMPERATURE)aColorTemperature;
+        BOOL success = SetMonitorColorTemperature(Handle, temp);
+    }
+    
     
     ///
     /// 
@@ -246,7 +270,7 @@ namespace SharpLib::MonitorConfig
         return (iMonitorCapabilities & MC_CAPS_CONTRAST) != 0;
     }
 
-    bool PhysicalMonitor::SupportsColourTemperature::get()
+    bool PhysicalMonitor::SupportsColorTemperature::get()
     {
         return (iMonitorCapabilities & MC_CAPS_COLOR_TEMPERATURE) != 0;
     }

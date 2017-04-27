@@ -45,15 +45,17 @@
             this.iButtonFactoryReset = new System.Windows.Forms.Button();
             this.iLabelMonitorTech = new System.Windows.Forms.Label();
             this.iGroupBoxGain = new System.Windows.Forms.GroupBox();
+            this.iLabelGainBluePercent = new System.Windows.Forms.Label();
+            this.iLabelGainGreenPercent = new System.Windows.Forms.Label();
+            this.iLabelGainRedPercent = new System.Windows.Forms.Label();
             this.iTrackBarGainBlue = new System.Windows.Forms.TrackBar();
             this.iLabelGainBlue = new System.Windows.Forms.Label();
             this.iTrackBarGainGreen = new System.Windows.Forms.TrackBar();
             this.iLabelGainGreen = new System.Windows.Forms.Label();
             this.iTrackBarGainRed = new System.Windows.Forms.TrackBar();
             this.iLabelGainRed = new System.Windows.Forms.Label();
-            this.iLabelGainRedPercent = new System.Windows.Forms.Label();
-            this.iLabelGainGreenPercent = new System.Windows.Forms.Label();
-            this.iLabelGainBluePercent = new System.Windows.Forms.Label();
+            this.iLabelColorTemperature = new System.Windows.Forms.Label();
+            this.iComboBoxColorTemperature = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.iGroupBoxGain.SuspendLayout();
@@ -209,12 +211,39 @@
             this.iGroupBoxGain.Controls.Add(this.iLabelGainGreen);
             this.iGroupBoxGain.Controls.Add(this.iTrackBarGainRed);
             this.iGroupBoxGain.Controls.Add(this.iLabelGainRed);
-            this.iGroupBoxGain.Location = new System.Drawing.Point(12, 168);
+            this.iGroupBoxGain.Location = new System.Drawing.Point(12, 213);
             this.iGroupBoxGain.Name = "iGroupBoxGain";
             this.iGroupBoxGain.Size = new System.Drawing.Size(413, 176);
             this.iGroupBoxGain.TabIndex = 14;
             this.iGroupBoxGain.TabStop = false;
             this.iGroupBoxGain.Text = "Gain";
+            // 
+            // iLabelGainBluePercent
+            // 
+            this.iLabelGainBluePercent.AutoSize = true;
+            this.iLabelGainBluePercent.Location = new System.Drawing.Point(339, 132);
+            this.iLabelGainBluePercent.Name = "iLabelGainBluePercent";
+            this.iLabelGainBluePercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelGainBluePercent.TabIndex = 15;
+            this.iLabelGainBluePercent.Text = "0%";
+            // 
+            // iLabelGainGreenPercent
+            // 
+            this.iLabelGainGreenPercent.AutoSize = true;
+            this.iLabelGainGreenPercent.Location = new System.Drawing.Point(339, 81);
+            this.iLabelGainGreenPercent.Name = "iLabelGainGreenPercent";
+            this.iLabelGainGreenPercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelGainGreenPercent.TabIndex = 14;
+            this.iLabelGainGreenPercent.Text = "0%";
+            // 
+            // iLabelGainRedPercent
+            // 
+            this.iLabelGainRedPercent.AutoSize = true;
+            this.iLabelGainRedPercent.Location = new System.Drawing.Point(339, 32);
+            this.iLabelGainRedPercent.Name = "iLabelGainRedPercent";
+            this.iLabelGainRedPercent.Size = new System.Drawing.Size(21, 13);
+            this.iLabelGainRedPercent.TabIndex = 13;
+            this.iLabelGainRedPercent.Text = "0%";
             // 
             // iTrackBarGainBlue
             // 
@@ -273,38 +302,33 @@
             this.iLabelGainRed.TabIndex = 7;
             this.iLabelGainRed.Text = "Red:";
             // 
-            // iLabelGainRedPercent
+            // iLabelColorTemperature
             // 
-            this.iLabelGainRedPercent.AutoSize = true;
-            this.iLabelGainRedPercent.Location = new System.Drawing.Point(339, 32);
-            this.iLabelGainRedPercent.Name = "iLabelGainRedPercent";
-            this.iLabelGainRedPercent.Size = new System.Drawing.Size(21, 13);
-            this.iLabelGainRedPercent.TabIndex = 13;
-            this.iLabelGainRedPercent.Text = "0%";
+            this.iLabelColorTemperature.AutoSize = true;
+            this.iLabelColorTemperature.Location = new System.Drawing.Point(12, 171);
+            this.iLabelColorTemperature.Name = "iLabelColorTemperature";
+            this.iLabelColorTemperature.Size = new System.Drawing.Size(97, 13);
+            this.iLabelColorTemperature.TabIndex = 16;
+            this.iLabelColorTemperature.Text = "Color Temperature:";
             // 
-            // iLabelGainGreenPercent
+            // iComboBoxColorTemperature
             // 
-            this.iLabelGainGreenPercent.AutoSize = true;
-            this.iLabelGainGreenPercent.Location = new System.Drawing.Point(339, 81);
-            this.iLabelGainGreenPercent.Name = "iLabelGainGreenPercent";
-            this.iLabelGainGreenPercent.Size = new System.Drawing.Size(21, 13);
-            this.iLabelGainGreenPercent.TabIndex = 14;
-            this.iLabelGainGreenPercent.Text = "0%";
-            // 
-            // iLabelGainBluePercent
-            // 
-            this.iLabelGainBluePercent.AutoSize = true;
-            this.iLabelGainBluePercent.Location = new System.Drawing.Point(339, 132);
-            this.iLabelGainBluePercent.Name = "iLabelGainBluePercent";
-            this.iLabelGainBluePercent.Size = new System.Drawing.Size(21, 13);
-            this.iLabelGainBluePercent.TabIndex = 15;
-            this.iLabelGainBluePercent.Text = "0%";
+            this.iComboBoxColorTemperature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.iComboBoxColorTemperature.FormattingEnabled = true;
+            this.iComboBoxColorTemperature.Location = new System.Drawing.Point(142, 168);
+            this.iComboBoxColorTemperature.Name = "iComboBoxColorTemperature";
+            this.iComboBoxColorTemperature.Size = new System.Drawing.Size(203, 21);
+            this.iComboBoxColorTemperature.TabIndex = 15;
+            this.iComboBoxColorTemperature.SelectedIndexChanged += new System.EventHandler(this.iComboBoxColorTemperature_SelectedIndexChanged);
+            this.iComboBoxColorTemperature.SelectionChangeCommitted += new System.EventHandler(this.iComboBoxColorTemperature_SelectionChangeCommitted);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 487);
+            this.Controls.Add(this.iLabelColorTemperature);
+            this.Controls.Add(this.iComboBoxColorTemperature);
             this.Controls.Add(this.iGroupBoxGain);
             this.Controls.Add(this.iLabelMonitorTech);
             this.Controls.Add(this.iButtonFactoryReset);
@@ -361,6 +385,8 @@
         private System.Windows.Forms.Label iLabelGainBluePercent;
         private System.Windows.Forms.Label iLabelGainGreenPercent;
         private System.Windows.Forms.Label iLabelGainRedPercent;
+        private System.Windows.Forms.Label iLabelColorTemperature;
+        private System.Windows.Forms.ComboBox iComboBoxColorTemperature;
     }
 }
 

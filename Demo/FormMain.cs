@@ -21,6 +21,8 @@ namespace MonitorConfigDemo
         {
             InitializeComponent();
 
+            PopulateColorTemperature();
+
             UpdateMonitors();           
         }
 
@@ -32,6 +34,18 @@ namespace MonitorConfigDemo
         private void iComboBoxVirtualMonitors_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulatePhysicalMonitors();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PopulateColorTemperature()
+        {
+            //SharpLib.MonitorConfig
+            foreach (ColorTemperature t in Enum.GetValues(typeof(ColorTemperature)))
+            {
+                iComboBoxColorTemperature.Items.Add(t);
+            }
         }
 
         /// <summary>
@@ -83,6 +97,18 @@ namespace MonitorConfigDemo
         /// <summary>
         /// 
         /// </summary>
+        private void UpdateColorTemperature()
+        {
+            // Color temperature
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            // We don't enforce disabling color temperature as notably Dell P2312H supports it but pretends it does not.
+            //iComboBoxColorTemperature.Enabled = pm.SupportsColorTemperature;
+            iComboBoxColorTemperature.SelectedItem = pm.ColorTemperature;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void UpdateMonitors()
         {
             //if (iMonitors!=null)
@@ -125,6 +151,9 @@ namespace MonitorConfigDemo
                 iLabelContrast.Enabled =
                 iLabelContrastPercent.Visible = pm.SupportsContrast;
             SetupTrackBar(iTrackBarContrast, pm.Contrast);
+
+            // Color temperature
+            UpdateColorTemperature();
 
             // Gain
             iGroupBoxGain.Enabled = pm.SupportsRgbGain;
@@ -265,6 +294,7 @@ namespace MonitorConfigDemo
             Setting red = new Setting((uint)iTrackBarGainRed.Minimum, (uint)iTrackBarGainRed.Value, (uint)iTrackBarGainRed.Maximum);
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.GainRed = red;
+            UpdateColorTemperature();
         }
 
         private void iTrackBarGainGreen_ValueChanged(object sender, EventArgs e)
@@ -278,6 +308,7 @@ namespace MonitorConfigDemo
             Setting green = new Setting((uint)iTrackBarGainGreen.Minimum, (uint)iTrackBarGainGreen.Value, (uint)iTrackBarGainGreen.Maximum);
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.GainGreen = green;
+            UpdateColorTemperature();
         }
 
         private void iTrackBarGainBlue_ValueChanged(object sender, EventArgs e)
@@ -291,7 +322,20 @@ namespace MonitorConfigDemo
             Setting blue = new Setting((uint)iTrackBarGainBlue.Minimum, (uint)iTrackBarGainBlue.Value, (uint)iTrackBarGainBlue.Maximum);
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.GainBlue = blue;
+            UpdateColorTemperature();
         }
 
+        private void iComboBoxColorTemperature_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void iComboBoxColorTemperature_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.ColorTemperature = (ColorTemperature)iComboBoxColorTemperature.SelectedItem;
+            // We will need to fetch the new color settings
+            // In fact changing color temperature often just changes color gain to some predefined value
+            UpdatePhysicalMonitor();
+        }
     }
 }
