@@ -1,7 +1,8 @@
 # Windows Monitor Configuration library
 A .NET library providing [Windows Monitor Configuration](1) functionalities to .NET applications.
 Written in C++/CLI to conveniently leverage Win32 APIs without dealing with [Platform Invocation Services](2).
-[Windows Monitor Configuration](1) enable applications to adjust a monitor settings such brightness, contrast and colors.
+
+[Windows Monitor Configuration](1) enable applications to adjust a monitor settings such as brightness, contrast and colors.
 It should work with any monitor compatible with [Display Data Channel (DDC/CI)](3) standards.
 
 # Monitor Configuration Demo
