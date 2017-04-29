@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.iComboBoxVirtualMonitors = new System.Windows.Forms.ComboBox();
             this.iButtonRefresh = new System.Windows.Forms.Button();
             this.iLabelVirtualMonitors = new System.Windows.Forms.Label();
@@ -79,7 +80,7 @@
             // iButtonRefresh
             // 
             this.iButtonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.iButtonRefresh.Location = new System.Drawing.Point(462, 452);
+            this.iButtonRefresh.Location = new System.Drawing.Point(372, 446);
             this.iButtonRefresh.Name = "iButtonRefresh";
             this.iButtonRefresh.Size = new System.Drawing.Size(75, 23);
             this.iButtonRefresh.TabIndex = 4;
@@ -174,7 +175,7 @@
             // iButtonColorReset
             // 
             this.iButtonColorReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.iButtonColorReset.Location = new System.Drawing.Point(100, 452);
+            this.iButtonColorReset.Location = new System.Drawing.Point(100, 446);
             this.iButtonColorReset.Name = "iButtonColorReset";
             this.iButtonColorReset.Size = new System.Drawing.Size(75, 23);
             this.iButtonColorReset.TabIndex = 11;
@@ -185,7 +186,7 @@
             // iButtonFactoryReset
             // 
             this.iButtonFactoryReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.iButtonFactoryReset.Location = new System.Drawing.Point(10, 452);
+            this.iButtonFactoryReset.Location = new System.Drawing.Point(10, 446);
             this.iButtonFactoryReset.Name = "iButtonFactoryReset";
             this.iButtonFactoryReset.Size = new System.Drawing.Size(84, 23);
             this.iButtonFactoryReset.TabIndex = 12;
@@ -348,7 +349,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 487);
+            this.ClientSize = new System.Drawing.Size(459, 481);
             this.Controls.Add(this.iLabelDeviceName);
             this.Controls.Add(this.iCheckBoxColorTemperatureUnlock);
             this.Controls.Add(this.iLabelColorTemperature);
@@ -368,6 +369,8 @@
             this.Controls.Add(this.iLabelPhysicalMonitors);
             this.Controls.Add(this.iLabelVirtualMonitors);
             this.Controls.Add(this.iComboBoxVirtualMonitors);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "Monitor Configuration Demo";
             this.Shown += new System.EventHandler(this.FormMain_Shown);

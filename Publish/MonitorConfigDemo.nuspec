@@ -2,29 +2,30 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>MonitorConfigDemo</id>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <title>Monitor Configuration Demo</title>
         <authors>Stephane Lenclud</authors>
+        <iconUrl>http://publish.slions.net/MonitorConfigDemo/favicon.ico</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Windows Monitor Configuration Demo for DDC/CI monitors.</description>
-        <copyright>Copyright (c) Stephane Lenclud, 2017</copyright>
+        <copyright>Copyright (c) 2017, Stephane Lenclud</copyright>
         <language>en-US</language>
     </metadata>
     <files>
-        <file src="..\Demo\bin\Release\DeltaCompressionDotNet.dll" target="lib\net45\DeltaCompressionDotNet.dll" />
-        <file src="..\Demo\bin\Release\DeltaCompressionDotNet.MsDelta.dll" target="lib\net45\DeltaCompressionDotNet.MsDelta.dll" />
-        <file src="..\Demo\bin\Release\DeltaCompressionDotNet.PatchApi.dll" target="lib\net45\DeltaCompressionDotNet.PatchApi.dll" />
-        <file src="..\Demo\bin\Release\ICSharpCode.SharpZipLib.dll" target="lib\net45\ICSharpCode.SharpZipLib.dll" />
-        <file src="..\Demo\bin\Release\ICSharpCode.SharpZipLib.xml" target="lib\net45\ICSharpCode.SharpZipLib.xml" />
-        <file src="..\Demo\bin\Release\MonitorConfigDemo.exe" target="lib\net45\MonitorConfigDemo.exe" />
-        <file src="..\Demo\bin\Release\MonitorConfigDemo.exe.config" target="lib\net45\MonitorConfigDemo.exe.config" />
-        <file src="..\Demo\bin\Release\Mono.Cecil.dll" target="lib\net45\Mono.Cecil.dll" />
-        <file src="..\Demo\bin\Release\Mono.Cecil.Mdb.dll" target="lib\net45\Mono.Cecil.Mdb.dll" />
-        <file src="..\Demo\bin\Release\Mono.Cecil.Pdb.dll" target="lib\net45\Mono.Cecil.Pdb.dll" />
-        <file src="..\Demo\bin\Release\Mono.Cecil.Rocks.dll" target="lib\net45\Mono.Cecil.Rocks.dll" />
-        <file src="..\Demo\bin\Release\NuGet.Squirrel.dll" target="lib\net45\NuGet.Squirrel.dll" />
-        <file src="..\Demo\bin\Release\SharpLibMonitorConfig.dll" target="lib\net45\SharpLibMonitorConfig.dll" />
-        <file src="..\Demo\bin\Release\Splat.dll" target="lib\net45\Splat.dll" />
-        <file src="..\Demo\bin\Release\Squirrel.dll" target="lib\net45\Squirrel.dll" />
+        <file src="..\Project\Demo\bin\Release\DeltaCompressionDotNet.dll" target="lib\net45\DeltaCompressionDotNet.dll" />
+        <file src="..\Project\Demo\bin\Release\DeltaCompressionDotNet.MsDelta.dll" target="lib\net45\DeltaCompressionDotNet.MsDelta.dll" />
+        <file src="..\Project\Demo\bin\Release\DeltaCompressionDotNet.PatchApi.dll" target="lib\net45\DeltaCompressionDotNet.PatchApi.dll" />
+        <file src="..\Project\Demo\bin\Release\ICSharpCode.SharpZipLib.dll" target="lib\net45\ICSharpCode.SharpZipLib.dll" />
+        <file src="..\Project\Demo\bin\Release\ICSharpCode.SharpZipLib.xml" target="lib\net45\ICSharpCode.SharpZipLib.xml" />
+        <file src="..\Project\Demo\bin\Release\MonitorConfigDemo.exe" target="lib\net45\MonitorConfigDemo.exe" />
+        <file src="..\Project\Demo\bin\Release\MonitorConfigDemo.exe.config" target="lib\net45\MonitorConfigDemo.exe.config" />
+        <file src="..\Project\Demo\bin\Release\Mono.Cecil.dll" target="lib\net45\Mono.Cecil.dll" />
+        <file src="..\Project\Demo\bin\Release\Mono.Cecil.Mdb.dll" target="lib\net45\Mono.Cecil.Mdb.dll" />
+        <file src="..\Project\Demo\bin\Release\Mono.Cecil.Pdb.dll" target="lib\net45\Mono.Cecil.Pdb.dll" />
+        <file src="..\Project\Demo\bin\Release\Mono.Cecil.Rocks.dll" target="lib\net45\Mono.Cecil.Rocks.dll" />
+        <file src="..\Project\Demo\bin\Release\NuGet.Squirrel.dll" target="lib\net45\NuGet.Squirrel.dll" />
+        <file src="..\Project\Demo\bin\Release\SharpLibMonitorConfig.dll" target="lib\net45\SharpLibMonitorConfig.dll" />
+        <file src="..\Project\Demo\bin\Release\Splat.dll" target="lib\net45\Splat.dll" />
+        <file src="..\Project\Demo\bin\Release\Squirrel.dll" target="lib\net45\Squirrel.dll" />
     </files>
 </package>
