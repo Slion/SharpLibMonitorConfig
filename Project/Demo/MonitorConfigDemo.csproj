@@ -197,8 +197,12 @@
   </UsingTask>
   <!-- Fetch path to squirrel.exe and nuget.exe -->
   <ItemGroup>
-    <SquirrelPackage Include="..\packages\squirrel.windows.*\tools\Squirrel.exe" />
-    <NuGetPackage Include="..\packages\NuGet.CommandLine.*\tools\NuGet.exe" />
+    <SquirrelPackage Include="..\packages\squirrel.windows.*\tools\Squirrel.exe">
+      <Link>Tools\Squirrel.exe</Link>
+    </SquirrelPackage>
+    <NuGetPackage Include="..\packages\NuGet.CommandLine.*\tools\NuGet.exe">
+      <Link>Tools\NuGet.exe</Link>
+    </NuGetPackage>
   </ItemGroup>
   <!-- Target to build Squirrel release -->
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
