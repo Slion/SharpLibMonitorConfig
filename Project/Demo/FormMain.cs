@@ -33,6 +33,45 @@ namespace MonitorConfigDemo
         }
 
         /// <summary>
+        /// Check for application update and ask the user to proceed if any.
+        /// </summary>
+        async void SquirrelUpdate()
+        {
+            // Check for Squirrel application update
+#if !DEBUG
+            ReleaseEntry release = null;
+            using (var mgr = new UpdateManager("http://publish.slions.net/MonitorConfigDemo"))
+            {
+                //
+                UpdateInfo updateInfo = await mgr.CheckForUpdate();
+                if (updateInfo.ReleasesToApply.Any()) // Check if we have any update
+                {
+                    // We have an update ask our user if he wants it
+                    System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                    FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                    string msg =    "New version available!" +
+                                    "\n\nCurrent version: " + updateInfo.CurrentlyInstalledVersion.Version +
+                                    "\nNew version: " + updateInfo.FutureReleaseEntry.Version +
+                                    "\n\nUpdate application now?";
+                    DialogResult dialogResult = MessageBox.Show(msg, fvi.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // User wants it, do the update
+                        release = await mgr.UpdateApp();
+                    }
+                }
+            }
+
+            // Restart the app
+            if (release!=null)
+            {
+                UpdateManager.RestartApp();
+            }           
+#endif
+        }
+
+
+        /// <summary>
         /// Our virtual monitor was changed.
         /// </summary>
         /// <param name="sender"></param>
@@ -227,6 +266,12 @@ namespace MonitorConfigDemo
             SetupTrackBar(iTrackBarGainGreen, pm.GainGreen);
             SetupTrackBar(iTrackBarGainBlue, pm.GainBlue);
 
+            // Drive
+            iGroupBoxDrive.Enabled = pm.SupportsRgbDrive;
+            SetupTrackBar(iTrackBarDriveRed, pm.DriveRed);
+            SetupTrackBar(iTrackBarDriveGreen, pm.DriveGreen);
+            SetupTrackBar(iTrackBarDriveBlue, pm.DriveBlue);
+
         }
 
         /// <summary>
@@ -315,6 +360,12 @@ namespace MonitorConfigDemo
             UpdatePhysicalMonitor();
         }
 
+        private void iTrackBarBrightness_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // In case other properties were altered by our brightness changes, reload them
+            UpdatePhysicalMonitor();
+        }
+
         private void iTrackBarBrightness_ValueChanged(object sender, EventArgs e)
         {
             UpdateTrackBar(iTrackBarBrightness, iLabelBrightnessPercent, iToolTip);
@@ -326,6 +377,16 @@ namespace MonitorConfigDemo
             Setting brightness = new Setting((uint)iTrackBarBrightness.Minimum, (uint)iTrackBarBrightness.Value, (uint)iTrackBarBrightness.Maximum);
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.Brightness = brightness;
+        }
+
+        private void iTrackBarContrast_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // Sent when the user stops scrolling
+            // On DELL U2413 any Drive component actually changes the contrast
+            // and the contrast changes the Drives, just don't ask
+            UpdatePhysicalMonitor();
+            // Doing the above upon scrolling is too slow so we only do that
+            // when the user is done scrolling
         }
 
         private void iTrackBarContrast_ValueChanged(object sender, EventArgs e)
@@ -361,6 +422,14 @@ namespace MonitorConfigDemo
             UpdatePhysicalMonitor();
         }
 
+        ////
+
+        private void iTrackBarGainRed_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // When user is down scrolling update all properties
+            UpdatePhysicalMonitor();
+        }
+
         private void iTrackBarGainRed_ValueChanged(object sender, EventArgs e)
         {
             UpdateTrackBar(iTrackBarGainRed, iLabelGainRedPercent, iToolTip);
@@ -371,8 +440,15 @@ namespace MonitorConfigDemo
             // Set gain red
             Setting red = new Setting((uint)iTrackBarGainRed.Minimum, (uint)iTrackBarGainRed.Value, (uint)iTrackBarGainRed.Maximum);
             PhysicalMonitor pm = CurrentPhysicalMonitor();
-            pm.GainRed = red;
-            UpdateColorTemperature();
+            pm.GainRed = red;            
+        }
+
+        /////
+
+        private void iTrackBarGainGreen_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // When user is down scrolling update all properties
+            UpdatePhysicalMonitor();
         }
 
         private void iTrackBarGainGreen_ValueChanged(object sender, EventArgs e)
@@ -389,6 +465,14 @@ namespace MonitorConfigDemo
             UpdateColorTemperature();
         }
 
+        /////
+
+        private void iTrackBarGainBlue_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // When user is down scrolling update all properties
+            UpdatePhysicalMonitor();
+        }
+
         private void iTrackBarGainBlue_ValueChanged(object sender, EventArgs e)
         {
             UpdateTrackBar(iTrackBarGainBlue, iLabelGainBluePercent, iToolTip);
@@ -401,10 +485,6 @@ namespace MonitorConfigDemo
             PhysicalMonitor pm = CurrentPhysicalMonitor();
             pm.GainBlue = blue;
             UpdateColorTemperature();
-        }
-
-        private void iComboBoxColorTemperature_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
 
         private void iComboBoxColorTemperature_SelectionChangeCommitted(object sender, EventArgs e)
@@ -422,39 +502,85 @@ namespace MonitorConfigDemo
             UpdateColorTemperature();
         }
 
+        /////
+
+        private void iTrackBarDriveRed_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // On DELL U2413 any Drive component actually changes the contrast
+            UpdatePhysicalMonitor();
+        }
+
+        private void iTrackBarDriveRed_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTrackBar(iTrackBarDriveRed, iLabelDriveRedPercent, iToolTip);
+        }
+
+        private void iTrackBarDriveRed_Scroll(object sender, EventArgs e)
+        {
+            // Set Drive red
+            Setting red = new Setting((uint)iTrackBarDriveRed.Minimum, (uint)iTrackBarDriveRed.Value, (uint)iTrackBarDriveRed.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.DriveRed = red;
+        }
+
+        /////
+
+        private void iTrackBarDriveGreen_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            // On DELL U2413 any Drive component actually changes the contrast
+            UpdatePhysicalMonitor();
+        }
+
+        private void iTrackBarDriveGreen_ValueChanged(object sender, EventArgs e)
+        {
+            // On DELL U2413 any Drive component actually changes the contrast
+            UpdateTrackBar(iTrackBarDriveGreen, iLabelDriveGreenPercent, iToolTip);
+        }
+
+        private void iTrackBarDriveGreen_Scroll(object sender, EventArgs e)
+        {
+            // Set Drive green
+            Setting green = new Setting((uint)iTrackBarDriveGreen.Minimum, (uint)iTrackBarDriveGreen.Value, (uint)iTrackBarDriveGreen.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.DriveGreen = green;
+        }
+
+        /////
+
+        private void iTrackBarDriveBlue_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iTrackBarDriveBlue_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTrackBar(iTrackBarDriveBlue, iLabelDriveBluePercent, iToolTip);
+        }
+
+        private void iTrackBarDriveBlue_Scroll(object sender, EventArgs e)
+        {
+            // Set Drive red
+            Setting blue = new Setting((uint)iTrackBarDriveBlue.Minimum, (uint)iTrackBarDriveBlue.Value, (uint)iTrackBarDriveBlue.Maximum);
+            PhysicalMonitor pm = CurrentPhysicalMonitor();
+            pm.DriveBlue = blue;
+            // On DELL U2413 any Drive component actually changes the contrast
+            UpdatePhysicalMonitor();
+        }
+
         async private void FormMain_Shown(object sender, EventArgs e)
         {
-            // Check for Squirrel application update
-#if !DEBUG
-            ReleaseEntry release = null;
-            using (var mgr = new UpdateManager("http://publish.slions.net/MonitorConfigDemo"))
-            {
-                //
-                UpdateInfo updateInfo = await mgr.CheckForUpdate();
-                if (updateInfo.ReleasesToApply.Any()) // Check if we have any update
-                {
-                    // We have an update ask our user if he wants it
-                    System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-                    FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-                    string msg =    "New version available!" +
-                                    "\n\nCurrent version: " + updateInfo.CurrentlyInstalledVersion.Version +
-                                    "\nNew version: " + updateInfo.FutureReleaseEntry.Version +
-                                    "\n\nUpdate application now?";
-                    DialogResult dialogResult = MessageBox.Show(msg, fvi.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        // User wants it, do the update
-                        release = await mgr.UpdateApp();
-                    }
-                }
-            }
+            SquirrelUpdate();
+        }
 
-            // Restart the app
-            if (release!=null)
-            {
-                UpdateManager.RestartApp();
-            }           
-#endif
+        async private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SquirrelUpdate();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox box = new AboutBox();
+            box.ShowDialog();
         }
     }
 }

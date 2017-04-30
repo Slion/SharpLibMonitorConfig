@@ -99,6 +99,27 @@ namespace SharpLib::MonitorConfig
             void set(Setting^ aSetting);
         }
 
+        // Drive Red
+        property Setting^ DriveRed
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
+        // Drive Green
+        property Setting^ DriveGreen
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
+        // Drive Blue
+        property Setting^ DriveBlue
+        {
+            Setting^ get();
+            void set(Setting^ aSetting);
+        }
+
 
         property String^ Description;
 
@@ -118,6 +139,10 @@ namespace SharpLib::MonitorConfig
         Setting iGainRed;
         Setting iGainGreen;
         Setting iGainBlue;
+        //
+        Setting iDriveRed;
+        Setting iDriveGreen;
+        Setting iDriveBlue;
         //
         String^ iTechnologyTypeName;
     };

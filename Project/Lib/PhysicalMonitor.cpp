@@ -258,6 +258,78 @@ namespace SharpLib::MonitorConfig
         BOOL success = SetMonitorRedGreenOrBlueGain(Handle, MC_BLUE_GAIN, aSetting->Current);
     }
 
+    ///
+    /// 
+    ///
+    Setting^ PhysicalMonitor::DriveRed::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorRedGreenOrBlueDrive(Handle, MC_RED_DRIVE, &min, &current, &max);
+        // Set our value
+        iGainRed.Current = current;
+        iGainRed.Min = min;
+        iGainRed.Max = max;
+        // Provide them
+        return %iGainRed;
+    }
+
+    ///
+    void PhysicalMonitor::DriveRed::set(Setting^ aSetting)
+    {
+        BOOL success = SetMonitorRedGreenOrBlueDrive(Handle, MC_RED_DRIVE, aSetting->Current);
+    }
+
+    ///
+    /// 
+    ///
+    Setting^ PhysicalMonitor::DriveGreen::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorRedGreenOrBlueDrive(Handle, MC_GREEN_DRIVE, &min, &current, &max);
+        // Set our value
+        iGainGreen.Current = current;
+        iGainGreen.Min = min;
+        iGainGreen.Max = max;
+        // Provide them
+        return %iGainGreen;
+    }
+
+    ///
+    void PhysicalMonitor::DriveGreen::set(Setting^ aSetting)
+    {
+        BOOL success = SetMonitorRedGreenOrBlueDrive(Handle, MC_GREEN_DRIVE, aSetting->Current);
+    }
+
+    ///
+    /// 
+    ///
+    Setting^ PhysicalMonitor::DriveBlue::get()
+    {
+        DWORD min = 0;
+        DWORD max = 0;
+        DWORD current = 0;
+        // Get our values
+        BOOL success = GetMonitorRedGreenOrBlueDrive(Handle, MC_BLUE_DRIVE, &min, &current, &max);
+        // Set our value
+        iGainBlue.Current = current;
+        iGainBlue.Min = min;
+        iGainBlue.Max = max;
+        // Provide them
+        return %iGainBlue;
+    }
+
+    ///
+    void PhysicalMonitor::DriveBlue::set(Setting^ aSetting)
+    {
+        BOOL success = SetMonitorRedGreenOrBlueDrive(Handle, MC_BLUE_DRIVE, aSetting->Current);
+    }
+
     ////////// Capabilities checks
 
     bool PhysicalMonitor::SupportsBrightness::get()

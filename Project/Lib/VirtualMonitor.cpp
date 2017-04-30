@@ -61,7 +61,7 @@ namespace SharpLib::MonitorConfig
     /// Destructor
     VirtualMonitor::~VirtualMonitor()
     {
-        // As per Microsoft recommandation we simply can the finalizer from here
+        // As per Microsoft recommandation we simply call the finalizer from here
         // See: https://msdn.microsoft.com/en-us/library/ke3a209d.aspx#Destructors%20and%20finalizers
         this->!VirtualMonitor();
     }

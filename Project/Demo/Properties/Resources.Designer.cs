@@ -61,11 +61,21 @@ namespace MonitorConfigDemo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AboutImage {
+            get {
+                object obj = ResourceManager.GetObject("AboutImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon app_icon_black {
+        internal static System.Drawing.Icon AppIcon {
             get {
-                object obj = ResourceManager.GetObject("app_icon_black", resourceCulture);
+                object obj = ResourceManager.GetObject("AppIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
