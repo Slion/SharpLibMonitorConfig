@@ -12,20 +12,20 @@
         <language>en-US</language>
     </metadata>
     <files>
-        <file src="..\Project\Demo\bin\Release\DeltaCompressionDotNet.dll" target="lib\net45\DeltaCompressionDotNet.dll" />
-        <file src="..\Project\Demo\bin\Release\DeltaCompressionDotNet.MsDelta.dll" target="lib\net45\DeltaCompressionDotNet.MsDelta.dll" />
-        <file src="..\Project\Demo\bin\Release\DeltaCompressionDotNet.PatchApi.dll" target="lib\net45\DeltaCompressionDotNet.PatchApi.dll" />
-        <file src="..\Project\Demo\bin\Release\ICSharpCode.SharpZipLib.dll" target="lib\net45\ICSharpCode.SharpZipLib.dll" />
-        <file src="..\Project\Demo\bin\Release\ICSharpCode.SharpZipLib.xml" target="lib\net45\ICSharpCode.SharpZipLib.xml" />
-        <file src="..\Project\Demo\bin\Release\MonitorConfigDemo.exe" target="lib\net45\MonitorConfigDemo.exe" />
-        <file src="..\Project\Demo\bin\Release\MonitorConfigDemo.exe.config" target="lib\net45\MonitorConfigDemo.exe.config" />
-        <file src="..\Project\Demo\bin\Release\Mono.Cecil.dll" target="lib\net45\Mono.Cecil.dll" />
-        <file src="..\Project\Demo\bin\Release\Mono.Cecil.Mdb.dll" target="lib\net45\Mono.Cecil.Mdb.dll" />
-        <file src="..\Project\Demo\bin\Release\Mono.Cecil.Pdb.dll" target="lib\net45\Mono.Cecil.Pdb.dll" />
-        <file src="..\Project\Demo\bin\Release\Mono.Cecil.Rocks.dll" target="lib\net45\Mono.Cecil.Rocks.dll" />
-        <file src="..\Project\Demo\bin\Release\NuGet.Squirrel.dll" target="lib\net45\NuGet.Squirrel.dll" />
-        <file src="..\Project\Demo\bin\Release\SharpLibMonitorConfig.dll" target="lib\net45\SharpLibMonitorConfig.dll" />
-        <file src="..\Project\Demo\bin\Release\Splat.dll" target="lib\net45\Splat.dll" />
-        <file src="..\Project\Demo\bin\Release\Squirrel.dll" target="lib\net45\Squirrel.dll" />
+        <file src="DeltaCompressionDotNet.dll" target="lib\net45\DeltaCompressionDotNet.dll" />
+        <file src="DeltaCompressionDotNet.MsDelta.dll" target="lib\net45\DeltaCompressionDotNet.MsDelta.dll" />
+        <file src="DeltaCompressionDotNet.PatchApi.dll" target="lib\net45\DeltaCompressionDotNet.PatchApi.dll" />
+        <file src="ICSharpCode.SharpZipLib.dll" target="lib\net45\ICSharpCode.SharpZipLib.dll" />
+        <file src="ICSharpCode.SharpZipLib.xml" target="lib\net45\ICSharpCode.SharpZipLib.xml" />
+        <file src="MonitorConfigDemo.exe" target="lib\net45\MonitorConfigDemo.exe" />
+        <file src="MonitorConfigDemo.exe.config" target="lib\net45\MonitorConfigDemo.exe.config" />
+        <file src="Mono.Cecil.dll" target="lib\net45\Mono.Cecil.dll" />
+        <file src="Mono.Cecil.Mdb.dll" target="lib\net45\Mono.Cecil.Mdb.dll" />
+        <file src="Mono.Cecil.Pdb.dll" target="lib\net45\Mono.Cecil.Pdb.dll" />
+        <file src="Mono.Cecil.Rocks.dll" target="lib\net45\Mono.Cecil.Rocks.dll" />
+        <file src="NuGet.Squirrel.dll" target="lib\net45\NuGet.Squirrel.dll" />
+        <file src="SharpLibMonitorConfig.dll" target="lib\net45\SharpLibMonitorConfig.dll" />
+        <file src="Splat.dll" target="lib\net45\Splat.dll" />
+        <file src="Squirrel.dll" target="lib\net45\Squirrel.dll" />
     </files>
 </package>
