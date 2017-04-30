@@ -70,8 +70,8 @@
             this.iTrackBarDriveRed = new System.Windows.Forms.TrackBar();
             this.iLabelDriveRed = new System.Windows.Forms.Label();
             this.iMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iToolStripMenuItemUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.iToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTrackBarContrast)).BeginInit();
             this.iGroupBoxGain.SuspendLayout();
@@ -476,27 +476,28 @@
             // 
             this.iMenuStrip.BackColor = System.Drawing.SystemColors.Window;
             this.iMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.iToolStripMenuItemAbout,
+            this.iToolStripMenuItemUpdate});
             this.iMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.iMenuStrip.Name = "iMenuStrip";
             this.iMenuStrip.Size = new System.Drawing.Size(459, 24);
             this.iMenuStrip.TabIndex = 20;
             this.iMenuStrip.Text = "Menu";
             // 
-            // updateToolStripMenuItem
+            // iToolStripMenuItemUpdate
             // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.updateToolStripMenuItem.Text = "Update";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            this.iToolStripMenuItemUpdate.Name = "iToolStripMenuItemUpdate";
+            this.iToolStripMenuItemUpdate.Size = new System.Drawing.Size(57, 20);
+            this.iToolStripMenuItemUpdate.Text = "Update";
+            this.iToolStripMenuItemUpdate.Visible = false;
+            this.iToolStripMenuItemUpdate.Click += new System.EventHandler(this.iToolStripMenuItemUpdate_Click);
             // 
-            // aboutToolStripMenuItem
+            // iToolStripMenuItemAbout
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.iToolStripMenuItemAbout.Name = "iToolStripMenuItemAbout";
+            this.iToolStripMenuItemAbout.Size = new System.Drawing.Size(52, 20);
+            this.iToolStripMenuItemAbout.Text = "About";
+            this.iToolStripMenuItemAbout.Click += new System.EventHandler(this.iToolStripMenuItemAbout_Click);
             // 
             // FormMain
             // 
@@ -591,8 +592,8 @@
         private System.Windows.Forms.TrackBar iTrackBarDriveRed;
         private System.Windows.Forms.Label iLabelDriveRed;
         private System.Windows.Forms.MenuStrip iMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iToolStripMenuItemUpdate;
+        private System.Windows.Forms.ToolStripMenuItem iToolStripMenuItemAbout;
     }
 }
 

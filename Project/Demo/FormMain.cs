@@ -59,6 +59,11 @@ namespace MonitorConfigDemo
                         // User wants it, do the update
                         release = await mgr.UpdateApp();
                     }
+                    else
+                    {
+                        // User cancel an update enable manual update option
+                        iToolStripMenuItemUpdate.Visible = true;
+                    }
                 }
             }
 
@@ -572,12 +577,12 @@ namespace MonitorConfigDemo
             SquirrelUpdate();
         }
 
-        async private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        async private void iToolStripMenuItemUpdate_Click(object sender, EventArgs e)
         {
             SquirrelUpdate();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void iToolStripMenuItemAbout_Click(object sender, EventArgs e)
         {
             AboutBox box = new AboutBox();
             box.ShowDialog();
