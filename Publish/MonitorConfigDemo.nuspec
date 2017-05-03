@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This NuGet package is designed to be used from MSBuild.
+	 Paths won't match when trying to open it with NuGet Package Manager.
+ -->
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>MonitorConfigDemo</id>
@@ -27,5 +30,11 @@
         <file src="SharpLibMonitorConfig.dll" target="lib\net45\SharpLibMonitorConfig.dll" />
         <file src="Splat.dll" target="lib\net45\Splat.dll" />
         <file src="Squirrel.dll" target="lib\net45\Squirrel.dll" />
+		<file src="Squirrel.dll" target="lib\net45\Squirrel.dll" />
+		<!-- Add Windows Visual Studio redist -->
+		<!-- C Run-Time Libraries (CRT) -->
+		<file src="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\vcruntime140.dll" target="lib\net45\vcruntime140.dll" />
+		<!-- Standard C++ Library -->
+		<file src="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\msvcp140.dll" target="lib\net45\msvcp140.dll" />				
     </files>
 </package>
