@@ -16,6 +16,6 @@
         <tags>Monitor Configuration Display DDC</tags>
     </metadata>
     <files>
-        <file src="bin\x86\Release\SharpLibMonitorConfig.dll" target="lib\net40\SharpLibMonitorConfig.dll" />
+        <file src="..\Project\Release\x86\SharpLibMonitorConfig.dll" target="lib\net40\SharpLibMonitorConfig.dll" />
     </files>
 </package>
