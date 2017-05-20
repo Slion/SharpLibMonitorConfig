@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SharpLibMonitorConfig</id>
+        <version>1.0.0</version>
+        <title>Windows Monitor Configuration Library</title>
+        <authors>Stéphane Lenclud</authors>
+        <owners>Stéphane Lenclud</owners>
+        <licenseUrl>http://www.gnu.org/copyleft/gpl.html</licenseUrl>
+        <projectUrl>https://github.com/Slion/SharpLibMonitorConfig</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>CLR Class Library providing access to Windows Monitor Configuration. Most convenient to adjust monitor settings such as brightness and contrast.</description>
+        <releaseNotes>Initial release.</releaseNotes>
+        <copyright>Stéphane Lenclud</copyright>
+        <language />
+        <tags>Monitor Configuration Display DDC</tags>
+    </metadata>
+    <files>
+        <file src="bin\x86\Release\SharpLibMonitorConfig.dll" target="lib\net40\SharpLibMonitorConfig.dll" />
+    </files>
+</package>
