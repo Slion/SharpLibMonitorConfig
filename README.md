@@ -1,3 +1,5 @@
+![Build Status](https://slions.visualstudio.com/_apis/public/build/definitions/ad16bbd0-a884-4787-8e3a-85daf30cca16/1/badge)
+
 # Windows Monitor Configuration library
 A .NET library providing [Windows Monitor Configuration] functionalities to .NET applications.
 Written in C++/CLI to conveniently leverage Win32 APIs without dealing with [Platform Invocation Services].
