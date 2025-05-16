@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "VirtualMonitor.h"
 
 using namespace System::Windows;

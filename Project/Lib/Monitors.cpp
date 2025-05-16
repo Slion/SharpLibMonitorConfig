@@ -1,7 +1,5 @@
 // This is the main DLL file.
 
-#include "stdafx.h"
-
 #include "Monitors.h"
 
 namespace SharpLib::MonitorConfig

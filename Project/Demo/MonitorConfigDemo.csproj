@@ -70,7 +70,7 @@
     <Content Include="Resources\AboutImage.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lib\SharpLibMonitorConfig.net.vcxproj" />
+    <ProjectReference Include="..\Lib\SharpLibMonitorConfig.vcxproj" />
   </ItemGroup>
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
