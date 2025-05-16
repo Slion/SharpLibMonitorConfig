@@ -12,6 +12,9 @@ using namespace System::Collections::Generic;
 namespace SharpLib::MonitorConfig
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public ref class Monitors
     {
         // TODO: Add your methods for this class here.

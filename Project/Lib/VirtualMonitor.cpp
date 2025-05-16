@@ -106,7 +106,7 @@ namespace SharpLib::MonitorConfig
 
     ///
     /// That does not make sense if the monitor is actually virtual but who cares for now
-    ///
+    /// I reckon this was taken from there: https://stackoverflow.com/a/28257839/3969362
     void VirtualMonitor::LoadFriendlyName(int aIndex)
     {
         // Set default

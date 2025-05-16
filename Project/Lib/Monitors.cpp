@@ -16,7 +16,7 @@ namespace SharpLib::MonitorConfig
     }
 
     Monitors::Monitors()
-    { 
+    {
         Construct();
     }
 

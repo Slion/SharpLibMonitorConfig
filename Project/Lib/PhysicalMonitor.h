@@ -13,7 +13,7 @@ namespace SharpLib::MonitorConfig
 {
 
     /// <summary>
-    /// Summary for VirtualMonitor
+    /// 
     /// </summary>
     public ref class PhysicalMonitor
     {

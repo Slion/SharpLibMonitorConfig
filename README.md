@@ -18,3 +18,15 @@ Please visist the [Monitor Configuration Demo] home page.
 [Display Data Channel (DDC/CI)]: https://en.wikipedia.org/wiki/Display_Data_Channel
 [Monitor Configuration Demo]: https://slions.net/resources/monitor-configuration-demo.3/
 
+# Resources
+
+- [Compile C++/CLI]
+- [Port C++/CLI]
+- [.NET with C++/CLI]
+- [Get monitor name]
+
+
+[Compile C++/CLI]: https://learn.microsoft.com/en-us/cpp/dotnet/walkthrough-compiling-a-cpp-program-that-targets-the-clr-in-visual-studio?view=msvc-170
+[Port C++/CLI]: https://learn.microsoft.com/en-us/dotnet/core/porting/cpp-cli
+[.NET with C++/CLI]: https://learn.microsoft.com/en-us/cpp/dotnet/dotnet-programming-with-cpp-cli-visual-cpp
+[Get monitor name]: https://stackoverflow.com/a/28257839/3969362
