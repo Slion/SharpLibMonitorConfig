@@ -34,9 +34,10 @@ namespace SharpLib::MonitorConfig
         LoadFriendlyName(aIndex);
 
         //Build a Rect to be able to get the resolution conveniently
-        System::Windows::Point pt1(iInfo->rcMonitor.left, iInfo->rcMonitor.bottom);
-        System::Windows::Point pt2(iInfo->rcMonitor.right, iInfo->rcMonitor.top);
-        Rect = System::Windows::Rect(pt1,pt2);
+        //System::Drawing::Point pt1(iInfo->rcMonitor.left, iInfo->rcMonitor.top);
+        System::Drawing::Point pt1(0, 0);
+        System::Drawing::Size pt2(iInfo->rcMonitor.right - iInfo->rcMonitor.left, iInfo->rcMonitor.bottom - iInfo->rcMonitor.top);
+        Rect = System::Drawing::Rectangle(pt1,pt2);
 
         // Check how many physical monitor do we have
         DWORD count = 0;

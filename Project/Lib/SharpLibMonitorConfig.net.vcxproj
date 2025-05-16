@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,39 +19,42 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9A99F5A6-2EFD-4416-A91B-A86AF7EBA196}</ProjectGuid>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>SharpLibMonitorConfig</RootNamespace>
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <EnableManagedPackageReferenceSupport>true</EnableManagedPackageReferenceSupport>
+    <ProjectGuid>{C020A2D6-6363-C7BE-FA35-D5D0B96ECD00}</ProjectGuid>
+    <Keyword>NetCoreCProj</Keyword>
+    <RootNamespace>SharpLibMonitorConfignet</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <TargetFramework>net8.0</TargetFramework>
+    <WindowsTargetPlatformMinVersion>7.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>NetCore</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>NetCore</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>NetCore</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>NetCore</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -72,102 +75,56 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\$(PlatformTarget)</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\$(PlatformTarget)</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalOptions>/std:c++latest</AdditionalOptions>
-    </ClCompile>
-    <Link>
-      <AdditionalDependencies>user32.lib;Dxva2.lib</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalOptions>/std:c++latest</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;Dxva2.lib</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;dxva2.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalOptions>/std:c++latest</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;Dxva2.lib</AdditionalDependencies>
+      <AdditionalDependencies />
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalOptions>/std:c++latest</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;Dxva2.lib</AdditionalDependencies>
+      <AdditionalDependencies />
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ColorTemperature.h" />
-    <ClInclude Include="PhysicalMonitor.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Monitors.h" />
-    <ClInclude Include="Setting.h" />
-    <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="VirtualMonitor.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Monitors.cpp" />
     <ClCompile Include="PhysicalMonitor.cpp" />
     <ClCompile Include="Setting.cpp" />
-    <ClCompile Include="Stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="VirtualMonitor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="app.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="app.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="ColorTemperature.h" />
+    <ClInclude Include="Monitors.h" />
+    <ClInclude Include="PhysicalMonitor.h" />
+    <ClInclude Include="Setting.h" />
+    <ClInclude Include="VirtualMonitor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MonitorConfigDemo": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

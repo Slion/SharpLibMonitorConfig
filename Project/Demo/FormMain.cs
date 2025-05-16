@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Windows;
 using SharpLib.MonitorConfig;
 using System.Threading;
-using Squirrel;
+//using Squirrel;
 using System.Diagnostics;
 
 namespace MonitorConfigDemo
