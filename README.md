@@ -18,15 +18,20 @@ Please visist the [Monitor Configuration Demo] home page.
 [Display Data Channel (DDC/CI)]: https://en.wikipedia.org/wiki/Display_Data_Channel
 [Monitor Configuration Demo]: https://slions.net/resources/monitor-configuration-demo.3/
 
+# Library
+
+The provided library is a CLR Class Library (.NET).
+It's using C++/CLI to provide .NET application access to monitor configuration.
+
 # Resources
 
 - [Compile C++/CLI]
 - [Port C++/CLI]
 - [.NET with C++/CLI]
-- [Get monitor name]
-
+- Get monitor name, see [1] or [2]
 
 [Compile C++/CLI]: https://learn.microsoft.com/en-us/cpp/dotnet/walkthrough-compiling-a-cpp-program-that-targets-the-clr-in-visual-studio?view=msvc-170
 [Port C++/CLI]: https://learn.microsoft.com/en-us/dotnet/core/porting/cpp-cli
 [.NET with C++/CLI]: https://learn.microsoft.com/en-us/cpp/dotnet/dotnet-programming-with-cpp-cli-visual-cpp
-[Get monitor name]: https://stackoverflow.com/a/28257839/3969362
+[1]: https://stackoverflow.com/a/28257839/3969362
+[2]: https://stackoverflow.com/questions/20060584/get-the-name-of-a-monitor
